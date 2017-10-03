@@ -188,4 +188,16 @@ Public Class SQLConexionBD
         Return dtSet
     End Function
 
+    Public Function TotalesProcesar() As DataSet
+        Dim dtSet = New DataSet
+        Try
+            Dim SQLDataAdapter = New SqlDataAdapter("spProcesarTotales", Conexion)
+            SQLDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure
+            SQLDataAdapter.Fill(dtSet)
+        Catch ex As Exception
+            dtSet = Nothing
+        End Try
+        Return dtSet
+    End Function
+
 End Class

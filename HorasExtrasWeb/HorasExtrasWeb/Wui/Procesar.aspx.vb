@@ -63,6 +63,31 @@
     End Sub
 
     Protected Sub btnProcesar_Click(sender As Object, e As EventArgs) Handles btnProcesar.Click
+        GenerarTotales()
+    End Sub
+
+    Private Sub GenerarTotales()
+        Dim SQLConexionBD As New SQLConexionBD()
+        Dim dsTotales As New DataSet
+        Dim dtTotal050 As New DataTable
+        Dim dtTotal100 As New DataTable
+
+        dsTotales = SQLConexionBD.TotalesProcesar()
+        If dsTotales Is Nothing Then
+            Exit Sub
+        End If
+        dtTotal050 = dsTotales.Tables(0)
+        dtTotal100 = dsTotales.Tables(1)
+
+        GenerarArchivo(dtTotal050)
+    End Sub
+
+    Private Sub GenerarArchivo(ByVal dt050 As DataTable)
+        Dim path As String = "C:\Temp\MyTest.txt"
+
+        For Each row As DataRow In dt050.Rows
+
+        Next
 
     End Sub
 
