@@ -16,6 +16,7 @@
         Dim dtEmpleado As New DataTable
         Dim dsTablas As New DataSet
         Dim dtAprobaciones As New DataTable
+        Dim dsEmpleados As New DataSet
 
         Dim user As String
         If (Request.Cookies("Usuario") IsNot Nothing) Then
@@ -28,17 +29,21 @@
             Exit Sub
         End If
 
+        'Datos del empleado
+        dsEmpleados = SQLConexionBD.RecuperarDatosEmpleado(user)
+        If dsEmpleados Is Nothing Then
+            Exit Sub
+        End If
+        dtEmpleado = dsEmpleados.Tables(0)
+        DatosEmpleado(dtEmpleado)
+
         dsTablas = SQLConexionBD.RecuperarAprobaciones(user)
         dtAprobaciones = dsTablas.Tables(0)
-
         If dsTablas.Tables.Count = 1 Then
             Exit Sub
         End If
-        dtEmpleado = dsTablas.Tables(1)
-        DatosEmpleado(dtEmpleado)
         Session("dtAprobaciones") = dtAprobaciones
         BindDataGrid()
-
     End Sub
 
     Private Sub DatosEmpleado(ByVal dtEmpleado As DataTable)
@@ -48,27 +53,10 @@
         Master.areaId = dtEmpleado.Rows(0)("AreaId")
         Master.Dep = dtEmpleado.Rows(0)("Departamento")
         Master.DepId = dtEmpleado.Rows(0)("DepartamentoId")
-
-        'lblUsuario.Text = Context.User.Identity.Name
-        'lblUsuario.Visible = True
-        'lblTxtUsuario.Visible = True
-        'lblCodigo.Text = dtEmpleado.Rows(0)("CodigoEmp")
-        'lblCodigo.Visible = True
-        'lblTxtCodigo.Visible = True
-        lblAnio.Text = dtEmpleado.Rows(0)("Anio")
-        lblAnio.Visible = True
-        lblTxtAnio.Visible = True
-        lblPeriodo.Text = dtEmpleado.Rows(0)("Periodo")
-        lblPeriodo.Visible = True
-        lblTxtPeriodo.Visible = True
-        lblTxtInicio.Visible = True
-        Dim fecIni As Date = dtEmpleado.Rows(0)("FechaInicial")
-        lblInicio.Text = fecIni.ToString("yyyy/MM/dd")
-        lblInicio.Visible = True
-        lblTxtFin.Visible = True
-        Dim fecFin As Date = dtEmpleado.Rows(0)("FechaFinal")
-        lblFin.Text = fecFin.ToString("yyyy/MM/dd")
-        lblFin.Visible = True
+        Master.Año = dtEmpleado.Rows(0)("Anio")
+        Master.Periodo = dtEmpleado.Rows(0)("Periodo")
+        Master.Inicio = dtEmpleado.Rows(0)("FechaInicial")
+        Master.Fin = dtEmpleado.Rows(0)("FechaFinal")
     End Sub
 
     Private Sub BindDataGrid()
@@ -102,10 +90,12 @@
                 End If
 
                 If rows.Item("SUPERVISOR") = "True" Then
-                    rows.Item("UsuarioSuper") = lblUsuario.Text
+                    'rows.Item("UsuarioSuper") = lblUsuario.Text
+                    rows.Item("UsuarioSuper") = Master.usuario
                     rows.Item("FechaSuper") = DateTime.Now.ToShortDateString
                 Else
-                    rows.Item("UsuarioJefe") = lblUsuario.Text
+                    'rows.Item("UsuarioJefe") = lblUsuario.Text
+                    rows.Item("UsuarioJefe") = Master.usuario
                     rows.Item("FechaJefe") = DateTime.Now.ToShortDateString
                 End If
             ElseIf btn.ID = "ButtonRechazar" Then
@@ -137,12 +127,15 @@
 
         cadenaXML &= "<APROBA "
         cadenaXML &= "CODEMP=""" & row.Item("NOMINA_ID").ToString & """ "
-        cadenaXML &= "ANIOPE=""" & lblAnio.Text & """ "
-        cadenaXML &= "PERIOD=""" & lblPeriodo.Text & """ "
+        'cadenaXML &= "ANIOPE=""" & lblAnio.Text & """ "
+        cadenaXML &= "ANIOPE=""" & Master.Año & """ "
+        'cadenaXML &= "PERIOD=""" & lblPeriodo.Text & """ "
+        cadenaXML &= "PERIOD=""" & Master.Periodo & """ "
         cadenaXML &= "HORA50=""" & row.Item("SUPLEMENTARIAS").ToString & """ "
         cadenaXML &= "HOR100=""" & row.Item("EXTRAORDINARIAS").ToString & """ "
         cadenaXML &= "SUPERV=""" & row.Item("SUPERVISOR").ToString & """ "
-        cadenaXML &= "USUARI=""" & lblUsuario.Text & """ "
+        'cadenaXML &= "USUARI=""" & lblUsuario.Text & """ "
+        cadenaXML &= "USUARI=""" & Master.usuario & """ "
         cadenaXML &= "USUSUP=""" & row.Item("UsuarioSuper").ToString & """ "
         If row.Item("FechaSuper") IsNot System.DBNull.Value Then
             Dim fechaSuper As Date = row.Item("FechaSuper")
