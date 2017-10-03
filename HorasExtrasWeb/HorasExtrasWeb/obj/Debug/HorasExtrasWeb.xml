@@ -181,6 +181,14 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="P:HorasExtrasWeb.Aprobacion.Master">
+<summary>
+Propiedad Master.
+</summary>
+<remarks>
+Propiedad generada automáticamente.
+</remarks>
+</member>
 <member name="F:HorasExtrasWeb.ImprimirRegistro._form1">
 <summary>
 Control form1.
@@ -610,6 +618,23 @@ Control ContentPlaceHolder2.
 <remarks>
 Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Procesar._gvProcesar">
+<summary>
+Control gvProcesar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="P:HorasExtrasWeb.Procesar.Master">
+<summary>
+Propiedad Master.
+</summary>
+<remarks>
+Propiedad generada automáticamente.
 </remarks>
 </member>
 <member name="F:HorasExtrasWeb.Registro._lblTxtAnio">

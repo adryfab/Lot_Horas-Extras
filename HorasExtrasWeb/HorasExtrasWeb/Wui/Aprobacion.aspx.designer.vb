@@ -156,4 +156,16 @@ Partial Public Class Aprobacion
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents gvBiometrico As Global.System.Web.UI.WebControls.GridView
+    
+    '''<summary>
+    '''Propiedad Master.
+    '''</summary>
+    '''<remarks>
+    '''Propiedad generada automáticamente.
+    '''</remarks>
+    Public Shadows ReadOnly Property Master() As HorasExtrasWeb.Maestro
+        Get
+            Return CType(MyBase.Master,HorasExtrasWeb.Maestro)
+        End Get
+    End Property
 End Class

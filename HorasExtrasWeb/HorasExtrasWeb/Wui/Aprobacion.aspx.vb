@@ -42,12 +42,19 @@
     End Sub
 
     Private Sub DatosEmpleado(ByVal dtEmpleado As DataTable)
-        lblUsuario.Text = Context.User.Identity.Name
-        lblUsuario.Visible = True
-        lblTxtUsuario.Visible = True
-        lblCodigo.Text = dtEmpleado.Rows(0)("CodigoEmp")
-        lblCodigo.Visible = True
-        lblTxtCodigo.Visible = True
+        Master.usuario = Context.User.Identity.Name
+        Master.codigo = dtEmpleado.Rows(0)("CodigoEmp")
+        Master.area = dtEmpleado.Rows(0)("Area")
+        Master.areaId = dtEmpleado.Rows(0)("AreaId")
+        Master.Dep = dtEmpleado.Rows(0)("Departamento")
+        Master.DepId = dtEmpleado.Rows(0)("DepartamentoId")
+
+        'lblUsuario.Text = Context.User.Identity.Name
+        'lblUsuario.Visible = True
+        'lblTxtUsuario.Visible = True
+        'lblCodigo.Text = dtEmpleado.Rows(0)("CodigoEmp")
+        'lblCodigo.Visible = True
+        'lblTxtCodigo.Visible = True
         lblAnio.Text = dtEmpleado.Rows(0)("Anio")
         lblAnio.Visible = True
         lblTxtAnio.Visible = True
