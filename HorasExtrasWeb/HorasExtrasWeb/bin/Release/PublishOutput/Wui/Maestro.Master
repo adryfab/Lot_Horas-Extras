@@ -1,0 +1,74 @@
+﻿<%@ master language="VB" autoeventwireup="false" codebehind="Maestro.master.vb" inherits="HorasExtrasWeb.Maestro" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Registro de Horas Extras</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header class="w3-container w3-indigo">
+            <h1>Horas Extras</h1>
+        </header>
+        <div class="w3-container">                        
+            <div class="w3-bar w3-light-grey w3-border">
+                <a href="Registro.aspx" class="w3-bar-item w3-button w3-border w3-hover-indigo">Registro</a>
+                <a href="Aprobacion.aspx" class="w3-bar-item w3-button w3-border w3-hover-indigo">Aprobar</a>
+                <a href="Login.aspx" class="w3-bar-item w3-button w3-border w3-hover-indigo w3-right">Ingresar</a>
+            </div>
+<%--            <div>
+                <table>
+                    <tr>
+                        <td>
+                            <asp:Label ID="lblTxtUsuario" runat="server" Text="Usuario: " Visible="False" />
+                        </td>
+                        <td class="w3-tag w3-pale-blue">
+                            <asp:Label ID="lblUsuario" runat="server" Text="Label" Visible="False" />
+                        </td>
+                        <td>
+                            <asp:Label ID="lblTxtCodigo" runat="server" Text="Codigo: " Visible="False" />
+                        </td>
+                        <td class="w3-tag w3-pale-blue">
+                            <asp:Label ID="lblCodigo" runat="server" Text="Label" Visible="False" />
+                        </td>
+                        <td>
+                            <asp:Label ID="lblTxtAnio" runat="server" Text="Año: " Visible="False" />
+                        </td>
+                        <td class="w3-tag w3-pale-blue">
+                            <asp:Label ID="lblAnio" runat="server" Text="Label" Visible="False" />
+                        </td>
+                        <td>
+                            <asp:Label ID="lblTxtPeriodo" runat="server" Text="Periodo: " Visible="False" />
+                        </td>
+                        <td class="w3-tag w3-pale-blue">
+                            <asp:Label ID="lblPeriodo" runat="server" Text="Label" Visible="False"/>
+                        </td>
+                        <td>
+                            <asp:Label ID="lblTxtInicio" runat="server" Text="Desde: " Visible="False" />
+                        </td>
+                        <td class="w3-tag w3-pale-blue">
+                            <asp:Label ID="lblInicio" runat="server" Text="Label" Visible="False"/>
+                        </td>
+                        <td>
+                            <asp:Label ID="lblTxtFin" runat="server" Text="Hasta: " Visible="False"/>
+                        </td>
+                        <td class="w3-tag w3-pale-blue">
+                            <asp:Label ID="lblFin" runat="server" Text="Label" Visible="False"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>--%>
+        </div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">        
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">    
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo se usa en el proceso de publicación y empaquetado del proyecto web. Para personalizar el comportamiento de este proceso,
+edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 para obtener más información. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_NewBackgroundProfile>False</_NewBackgroundProfile>
+    <_PublishTargetUrl>C:\inetpub\wwwroot\HorasExtras</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/HorasExtrasWeb.dll">
+      <publishTime>09/22/2017 10:43:19</publishTime>
+    </File>
+    <File Include="bin/HorasExtrasWeb.pdb">
+      <publishTime>09/22/2017 10:43:19</publishTime>
+    </File>
+    <File Include="bin/HorasExtrasWeb.xml">
+      <publishTime>09/22/2017 10:43:19</publishTime>
+    </File>
+    <File Include="icons/aceptar.ico">
+      <publishTime>12/12/2016 11:21:18</publishTime>
+    </File>
+    <File Include="icons/buscar.ico">
+      <publishTime>04/20/2011 17:39:06</publishTime>
+    </File>
+    <File Include="icons/editar.ico">
+      <publishTime>08/02/2017 09:18:11</publishTime>
+    </File>
+    <File Include="icons/eliminar.ico">
+      <publishTime>08/02/2017 09:19:06</publishTime>
+    </File>
+    <File Include="icons/guardar.ico">
+      <publishTime>08/02/2017 09:19:43</publishTime>
+    </File>
+    <File Include="icons/impresora.ico">
+      <publishTime>10/29/2009 15:27:30</publishTime>
+    </File>
+    <File Include="icons/minus.gif">
+      <publishTime>04/02/2012 23:07:32</publishTime>
+    </File>
+    <File Include="icons/nuevo.ico">
+      <publishTime>08/02/2017 09:20:24</publishTime>
+    </File>
+    <File Include="icons/plus.gif">
+      <publishTime>04/02/2012 23:07:20</publishTime>
+    </File>
+    <File Include="icons/rechazar.ico">
+      <publishTime>07/18/2017 11:37:22</publishTime>
+    </File>
+    <File Include="icons/regresar.ico">
+      <publishTime>08/02/2017 09:27:59</publishTime>
+    </File>
+    <File Include="script/jquery-1.5.2.min.js">
+      <publishTime>04/17/2011 22:21:02</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/22/2017 10:43:19</publishTime>
+    </File>
+    <File Include="Wui/Aprobacion.aspx">
+      <publishTime>09/19/2017 12:13:34</publishTime>
+    </File>
+    <File Include="Wui/ImprimirRegistro.aspx">
+      <publishTime>09/21/2017 16:34:25</publishTime>
+    </File>
+    <File Include="Wui/Login.aspx">
+      <publishTime>09/21/2017 10:41:36</publishTime>
+    </File>
+    <File Include="Wui/Maestro.Master">
+      <publishTime>09/18/2017 14:53:00</publishTime>
+    </File>
+    <File Include="Wui/Registro.aspx">
+      <publishTime>09/21/2017 15:54:40</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
