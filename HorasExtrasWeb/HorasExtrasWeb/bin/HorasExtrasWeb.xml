@@ -602,6 +602,78 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:HorasExtrasWeb.Maestro._lblTxtAnio">
+<summary>
+Control lblTxtAnio.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Maestro._lblAnio">
+<summary>
+Control lblAnio.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Maestro._lblTxtPeriodo">
+<summary>
+Control lblTxtPeriodo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Maestro._lblPeriodo">
+<summary>
+Control lblPeriodo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Maestro._lblTxtInicio">
+<summary>
+Control lblTxtInicio.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Maestro._lblInicio">
+<summary>
+Control lblInicio.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Maestro._lblTxtFin">
+<summary>
+Control lblTxtFin.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Maestro._lblFin">
+<summary>
+Control lblFin.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:HorasExtrasWeb.Maestro._ContentPlaceHolder1">
 <summary>
 Control ContentPlaceHolder1.
@@ -623,6 +695,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:HorasExtrasWeb.Procesar._btnProcesar">
 <summary>
 Control btnProcesar.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Procesar._lblOk">
+<summary>
+Control lblOk.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Procesar._lblError">
+<summary>
+Control lblError.
 </summary>
 <remarks>
 Campo generado automáticamente.

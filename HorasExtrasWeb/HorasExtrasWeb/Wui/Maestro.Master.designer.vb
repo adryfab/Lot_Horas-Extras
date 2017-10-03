@@ -131,6 +131,78 @@ Partial Public Class Maestro
     Protected WithEvents lblDepId As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
+    '''Control lblTxtAnio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblTxtAnio As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control lblAnio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblAnio As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control lblTxtPeriodo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblTxtPeriodo As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control lblPeriodo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblPeriodo As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control lblTxtInicio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblTxtInicio As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control lblInicio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblInicio As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control lblTxtFin.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblTxtFin As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control lblFin.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblFin As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''Control ContentPlaceHolder1.
     '''</summary>
     '''<remarks>

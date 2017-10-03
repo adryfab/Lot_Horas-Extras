@@ -64,9 +64,41 @@
         End Set
     End Property
 
-    Sub Page_Init(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Init
+    Public Property Año() As String
+        Get
+            Return CType(ViewState("Año"), String)
+        End Get
+        Set(ByVal Value As String)
+            ViewState("Año") = Value
+        End Set
+    End Property
 
-    End Sub
+    Public Property Periodo() As String
+        Get
+            Return CType(ViewState("Periodo"), String)
+        End Get
+        Set(ByVal Value As String)
+            ViewState("Periodo") = Value
+        End Set
+    End Property
+
+    Public Property Inicio() As Date
+        Get
+            Return CType(ViewState("Inicio"), Date)
+        End Get
+        Set(ByVal Value As Date)
+            ViewState("Inicio") = Value
+        End Set
+    End Property
+
+    Public Property Fin() As Date
+        Get
+            Return CType(ViewState("Fin"), Date)
+        End Get
+        Set(ByVal Value As Date)
+            ViewState("Fin") = Value
+        End Set
+    End Property
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         lblUsuario.Text = Me.usuario
@@ -76,6 +108,10 @@
         lblDep.Text = Me.Dep
         lblDepId.Text = Me.DepId
         idProcesar.Visible = procesar
+        lblAnio.Text = Me.Año
+        lblPeriodo.Text = Me.Periodo
+        lblInicio.Text = Me.Inicio
+        lblFin.Text = Me.Fin
     End Sub
 
 End Class

@@ -8,6 +8,8 @@
     </div>
     <div>
         <asp:Button ID="btnProcesar" runat="server" Text="Generar Archivos" />
+        <asp:Label ID="lblOk" runat="server" Text="" Visible="false" CssClass="w3-panel w3-blue"/>
+        <asp:Label ID="lblError" runat="server" Text="" Visible="false" CssClass="w3-panel w3-red"/>
     </div>
     <br/>
     <div>
@@ -63,6 +65,7 @@
                 </asp:TemplateField>                
             </Columns>
         </asp:GridView>
+    </div>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">

@@ -58,8 +58,19 @@
         Master.areaId = dtEmpleado.Rows(0)("AreaId")
         Master.Dep = dtEmpleado.Rows(0)("Departamento")
         Master.DepId = dtEmpleado.Rows(0)("DepartamentoId")
+        Master.Año = dtEmpleado.Rows(0)("Anio")
+        Master.Periodo = dtEmpleado.Rows(0)("Periodo")
+        Master.Inicio = dtEmpleado.Rows(0)("FechaInicial")
+        Master.Fin = dtEmpleado.Rows(0)("FechaFinal")
 
         Master.procesar = True 'OJO*****
+    End Sub
+
+    Private Sub Limpiar()
+        lblOk.Text = ""
+        lblOk.Visible = False
+        lblError.Text = ""
+        lblError.Visible = False
     End Sub
 
     Protected Sub btnProcesar_Click(sender As Object, e As EventArgs) Handles btnProcesar.Click
@@ -79,16 +90,35 @@
         dtTotal050 = dsTotales.Tables(0)
         dtTotal100 = dsTotales.Tables(1)
 
-        GenerarArchivo(dtTotal050)
+        GenerarArchivo(dtTotal050, dtTotal100)
     End Sub
 
-    Private Sub GenerarArchivo(ByVal dt050 As DataTable)
-        Dim path As String = "C:\Temp\MyTest.txt"
+    Private Sub GenerarArchivo(ByVal dt050 As DataTable, ByVal dt100 As DataTable)
+        Dim file As System.IO.StreamWriter
+        Dim tab As String = vbTab
+        Try
+            'Procesa 50%
+            Dim path050 As String = "C:\Temp\Horas50%_" + Master.Año + "-" + Master.Periodo + ".txt"
+            file = My.Computer.FileSystem.OpenTextFileWriter(path050, True)
+            For Each row As DataRow In dt050.Rows
+                file.WriteLine(row("Cedula") + tab + row("Cod") + tab + row("50"))
+            Next
+            file.Close()
 
-        For Each row As DataRow In dt050.Rows
+            'Procesa 100%
+            Dim path100 As String = "C:\Temp\Horas100%_" + Master.Año + "-" + Master.Periodo + ".txt"
+            file = My.Computer.FileSystem.OpenTextFileWriter(path100, True)
+            For Each row As DataRow In dt100.Rows
+                file.WriteLine(row("Cedula") + tab + row("Cod") + tab + row("100"))
+            Next
+            file.Close()
 
-        Next
-
+            lblOk.Text = "Archivos procesados"
+            lblOk.Visible = True
+        Catch ex As Exception
+            lblError.Text = ex.Message
+            lblError.Visible = True
+        End Try
     End Sub
 
 #End Region

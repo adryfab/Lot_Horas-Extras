@@ -23,6 +23,24 @@ Partial Public Class Procesar
     Protected WithEvents btnProcesar As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
+    '''Control lblOk.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblOk As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control lblError.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblError As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''Control gvProcesar.
     '''</summary>
     '''<remarks>
