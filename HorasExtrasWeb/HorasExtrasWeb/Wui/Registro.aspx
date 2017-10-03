@@ -57,30 +57,6 @@
         <table>
             <tr class="w3-small">
                 <td>
-                    <asp:Label ID="lblTxtAnio" runat="server" Text="Año: " Visible="False" />
-                </td>
-                <td class="w3-tag w3-pale-blue">
-                    <asp:Label ID="lblAnio" runat="server" Text="lblAnio" Visible="False" />
-                </td>
-                <td>
-                    <asp:Label ID="lblTxtPeriodo" runat="server" Text="Periodo: " Visible="False" />
-                </td>
-                <td class="w3-tag w3-pale-blue">
-                    <asp:Label ID="lblPeriodo" runat="server" Text="lblPeriodo" Visible="False"/>
-                </td>
-                <td>
-                    <asp:Label ID="lblTxtInicio" runat="server" Text="Desde: " Visible="False" />
-                </td>
-                <td class="w3-tag w3-pale-blue">
-                    <asp:Label ID="lblInicio" runat="server" Text="lblInicio" Visible="False"/>
-                </td>
-                <td>
-                    <asp:Label ID="lblTxtFin" runat="server" Text="Hasta: " Visible="False"/>
-                </td>
-                <td class="w3-tag w3-pale-blue">
-                    <asp:Label ID="lblFin" runat="server" Text="lblFin" Visible="False"/>
-                </td>
-                <td>
                     <asp:Label ID="lblAprobado" runat="server" Text="Aprobado" Visible="false" class="w3-red"/>
                 </td>
                 <td>

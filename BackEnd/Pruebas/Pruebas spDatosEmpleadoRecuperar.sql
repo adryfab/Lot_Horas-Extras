@@ -30,7 +30,7 @@ BEGIN
 			, PER.periodo AS 'Periodo'
 			, PER.FechaInicial AS 'FechaInicial'
 			, PER.FechaFinal AS 'FechaFinal'
-			--, CASE WHEN ISNULL(APR.UsuarioSuper,'') <> '' OR ISNULL(APR.UsuarioJefe,'') <> '' THEN 1 ELSE 0 END AS 'Aprobado'
+			, CASE WHEN ISNULL(APR.UsuarioSuper,'') <> '' OR ISNULL(APR.UsuarioJefe,'') <> '' THEN 1 ELSE 0 END AS 'Aprobado'
 			, NOM.NOMINA_AREA1 AS 'Area'
 			, NOM.NOMINA_AREA AS 'AreaId'
 			, NOM.NOMINA_DEP1 AS 'Departamento'

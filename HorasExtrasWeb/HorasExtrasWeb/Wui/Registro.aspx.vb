@@ -19,6 +19,7 @@ Public Class Registro
         Dim dtBiometrico As New DataTable
         Dim dtEmpleado As New DataTable
         Dim dsTablas As New DataSet
+        Dim dsEmpleados As New DataSet
 
         Dim user As String
         If (Request.Cookies("Usuario") IsNot Nothing) Then
@@ -36,41 +37,38 @@ Public Class Registro
             Exit Sub
         End If
         dtBiometrico = dsTablas.Tables(0)
-        dtEmpleado = dsTablas.Tables(1)
+
+        'Datos del empleado
+        dsEmpleados = SQLConexionBD.RecuperarDatosEmpleado(user)
+        If dsEmpleados Is Nothing Then
+            Exit Sub
+        End If
+        dtEmpleado = dsEmpleados.Tables(0)
         DatosEmpleado(dtEmpleado)
+
         Session("dtBiometrico") = dtBiometrico
         BindDataGrid()
         Totales()
     End Sub
 
     Private Sub DatosEmpleado(ByVal dtEmpleado As DataTable)
-        Master.usuario = Context.User.Identity.Name
-        Master.codigo = dtEmpleado.Rows(0)("CodigoEmp")
-        lblAnio.Text = dtEmpleado.Rows(0)("Anio")
-        lblAnio.Visible = True
-        lblTxtAnio.Visible = True
-        lblPeriodo.Text = dtEmpleado.Rows(0)("Periodo")
-        lblPeriodo.Visible = True
-        lblTxtPeriodo.Visible = True
-        lblTxtInicio.Visible = True
-        Dim fecIni As Date = dtEmpleado.Rows(0)("FechaInicial")
-        lblInicio.Text = fecIni
-        lblInicio.Visible = True
-        lblTxtFin.Visible = True
-        Dim fecFin As Date = dtEmpleado.Rows(0)("FechaFinal")
-        lblFin.Text = fecFin
-        lblFin.Visible = True
-        CompFechaIni.ValueToCompare = fecIni
-        ComFechFin.ValueToCompare = fecFin
         If dtEmpleado.Rows(0)("Aprobado") = "1" Then
             lblAprobado.Visible = True
         Else
             lblAprobado.Visible = False
         End If
+
+        Master.usuario = Context.User.Identity.Name
+        Master.codigo = dtEmpleado.Rows(0)("CodigoEmp")
         Master.area = dtEmpleado.Rows(0)("Area")
         Master.areaId = dtEmpleado.Rows(0)("AreaId")
         Master.Dep = dtEmpleado.Rows(0)("Departamento")
         Master.DepId = dtEmpleado.Rows(0)("DepartamentoId")
+        Master.Año = dtEmpleado.Rows(0)("Anio")
+        Master.Periodo = dtEmpleado.Rows(0)("Periodo")
+        Master.Inicio = dtEmpleado.Rows(0)("FechaInicial")
+        Master.Fin = dtEmpleado.Rows(0)("FechaFinal")
+
         Master.procesar = True 'OJO*****
     End Sub
 
@@ -124,8 +122,10 @@ Public Class Registro
         Dim horaRecuperar As DateTime = row.Item("HorasRecuperar")
         cadenaXML &= "HORREC=""" & horaRecuperar.ToString("HH:mm") & """ "
         cadenaXML &= "JUSTIF=""" & row.Item("Justificativo").ToString & """ "
-        cadenaXML &= "ANIOPE=""" & lblAnio.Text & """ "
-        cadenaXML &= "PERIOD=""" & lblPeriodo.Text & """ "
+        'cadenaXML &= "ANIOPE=""" & lblAnio.Text & """ "
+        cadenaXML &= "ANIOPE=""" & Master.Año & """ "
+        'cadenaXML &= "PERIOD=""" & lblPeriodo.Text & """ "
+        cadenaXML &= "PERIOD=""" & Master.Periodo & """ "
         cadenaXML &= "HOREXT=""" & row.Item("HorasExtrasId").ToString & """ "
         cadenaXML &= "ACTIVO=""" & row.Item("Activo") & """ "
         cadenaXML &= " /> "
@@ -148,7 +148,7 @@ Public Class Registro
                 Dim dateFin As DateTime = fecha.ToShortDateString + " " + lblFin.Text
                 If inicio > dateInicio And inicio < dateFin Then
                     result = False 'Se encuentra dentro del rango
-                    Exit Function
+                    Exit For
                 Else
                     result = True 'Está fuera del rango
                 End If
@@ -310,7 +310,8 @@ Public Class Registro
         Dim fecha As Date = dt.Rows(row.DataItemIndex)("Fecha")
 
         'La fecha no está en el rango
-        If fecha < lblInicio.Text Or fecha > lblFin.Text Then
+        'If fecha < lblInicio.Text Or fecha > lblFin.Text Then
+        If fecha < Master.Inicio Or fecha > Master.Fin Then
             Response.Write("La fecha no está dentro del rango")
             Exit Sub
         End If
@@ -389,8 +390,10 @@ Public Class Registro
         End If
         row("HorasRecuperar") = RecuperarTxt.Text
         row("Justificativo") = DetalleTxt.Text
-        row("Anio") = lblAnio.Text
-        row("Periodo") = lblPeriodo.Text
+        'row("Anio") = lblAnio.Text
+        row("Anio") = Master.Año
+        'row("Periodo") = lblPeriodo.Text
+        row("Periodo") = Master.Periodo
 
         CalculoHoras(row)
 
