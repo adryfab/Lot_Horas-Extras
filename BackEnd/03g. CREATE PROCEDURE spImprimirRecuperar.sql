@@ -48,6 +48,8 @@ BEGIN
 				, TBL.Fecha_Ingreso +' '+ CONVERT(VARCHAR(5), TBL.Horas_Laboradas, 114) AS 'Laborado'
 				, TBL.Fecha_Ingreso +' '+ RIGHT( convert(char(8), dateadd(second, TBL.min_150, ''), 114) ,5) AS 'Horas50'
 				, ISNULL(HOR.Descripcion,'') AS 'Justificativo'
+				, TBL.Fecha_Ingreso +' '+ '00:00' AS 'HorasPermiso'
+				, TBL.Fecha_Ingreso +' '+ '00:00'  AS 'HorasRecuperar'
 		FROM	BIOMETRICO.TCONTROL.dbo.TBL_ASISTENCIA TBL
 		INNER	JOIN #tbPeriodo	AS PER 
 		ON		TBL.Fecha_Ingreso between PER.FechaInicial and PER.FechaFinal
@@ -66,6 +68,8 @@ BEGIN
 				, CONVERT(VARCHAR,HE.Fecha) +' '+ CONVERT(VARCHAR(5),HE.HoraLaborado,114) AS 'Laborado'
 				, CONVERT(VARCHAR,HE.Fecha) +' '+ CONVERT(VARCHAR(5),HE.Horas50,114) AS 'Horas50'
 				, HE.Descripcion AS 'Justificativo'
+				, CONVERT(VARCHAR,HE.Fecha) +' '+ CONVERT(VARCHAR(5),HE.HorasPermiso,114) AS 'HorasPermiso'
+				, CONVERT(VARCHAR,HE.Fecha) +' '+ CONVERT(VARCHAR(5),HE.HorasRecuperar,114) AS 'HorasRecuperar'
 		FROM	HorasExtSup.dbo.tbHorasExtras HE
 		INNER	JOIN #tbPeriodo	AS PER 
 		ON		PER.anio = HE.Anio
@@ -85,6 +89,8 @@ BEGIN
 				, TBL.Fecha_Ingreso +' '+ CONVERT(VARCHAR(5), TBL.Horas_Laboradas, 114) AS 'Laborado'
 				, TBL.Fecha_Ingreso +' '+ RIGHT( convert(char(8), dateadd(second, TBL.min_200, ''), 114) ,5) AS 'Horas100'
 				, ISNULL(HOR.Descripcion,'') AS 'Justificativo'
+				, TBL.Fecha_Ingreso +' '+ '00:00' AS 'HorasPermiso'
+				, TBL.Fecha_Ingreso +' '+ '00:00'  AS 'HorasRecuperar'
 		FROM	BIOMETRICO.TCONTROL.dbo.TBL_ASISTENCIA TBL
 		INNER	JOIN #tbPeriodo	AS PER 
 		ON		TBL.Fecha_Ingreso between PER.FechaInicial and PER.FechaFinal
@@ -103,6 +109,8 @@ BEGIN
 				, CONVERT(VARCHAR,HE.Fecha) +' '+ CONVERT(VARCHAR(5),HE.HoraLaborado,114) AS 'Laborado'
 				, CONVERT(VARCHAR,HE.Fecha) +' '+ CONVERT(VARCHAR(5),HE.Horas100,114) AS 'Horas100'
 				, HE.Descripcion AS 'Justificativo'
+				, CONVERT(VARCHAR,HE.Fecha) +' '+ CONVERT(VARCHAR(5),HE.HorasPermiso,114) AS 'HorasPermiso'
+				, CONVERT(VARCHAR,HE.Fecha) +' '+ CONVERT(VARCHAR(5),HE.HorasRecuperar,114) AS 'HorasRecuperar'
 		FROM	HorasExtSup.dbo.tbHorasExtras HE
 		INNER	JOIN #tbPeriodo	AS PER 
 		ON		PER.anio = HE.Anio

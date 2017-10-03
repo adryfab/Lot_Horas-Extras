@@ -87,40 +87,23 @@
         Dim dtTotal50 As DataTable = Session("dtTotal50")
         Dim dtSuple50 As DataTable = Session("dtSuple50")
         If dtSuple50.Rows.Count > 0 Then
-            Dim horLab, horAtr, horAnt, horPer, horRec, hor000, hor050, hor100 As Integer
-            Dim minLab, minAtr, minAnt, minPer, minRec, min000, min050, min100 As Integer
+            Dim horLab, horPer, horRec, hor050 As Integer
+            Dim minLab, minPer, minRec, min050 As Integer
             For Each row As DataRow In dtSuple50.Rows
                 horLab = horLab + Convert.ToDateTime(row("Laborado")).Hour
                 minLab = minLab + Convert.ToDateTime(row("Laborado")).Minute
-                horAtr = horAtr + Convert.ToDateTime(row("Atrasado")).Hour
-                minAtr = minAtr + Convert.ToDateTime(row("Atrasado")).Minute
-                horAnt = horAnt + Convert.ToDateTime(row("Anticipado")).Hour
-                minAnt = minAnt + Convert.ToDateTime(row("Anticipado")).Minute
                 horPer = horPer + Convert.ToDateTime(row("HorasPermiso")).Hour
                 minPer = minPer + Convert.ToDateTime(row("HorasPermiso")).Minute
                 horRec = horRec + Convert.ToDateTime(row("HorasRecuperar")).Hour
                 minRec = minRec + Convert.ToDateTime(row("HorasRecuperar")).Minute
-                hor000 = hor000 + Convert.ToDateTime(row("Horas0")).Hour
-                min000 = min000 + Convert.ToDateTime(row("Horas0")).Minute
                 hor050 = hor050 + Convert.ToDateTime(row("Horas50")).Hour
                 min050 = min050 + Convert.ToDateTime(row("Horas50")).Minute
-                hor100 = hor100 + Convert.ToDateTime(row("Horas100")).Hour
-                min100 = min100 + Convert.ToDateTime(row("Horas100")).Minute
             Next
-            gvBiometrico50.FooterRow.Cells(0).Text = "Total de Horas al 50% al mes a pagar"
-            gvBiometrico50.FooterRow.Cells(0).HorizontalAlign = HorizontalAlign.Right
-            gvBiometrico50.FooterRow.Cells(0).ColumnSpan = 5
-            'gvBiometrico50.FooterRow.Cells(1).Text = dtTotal50.Rows(0).Item("TotalHoras50").ToString
-            gvBiometrico50.FooterRow.Cells(2).Visible = False
-            gvBiometrico50.FooterRow.Cells(3).Visible = False
-            gvBiometrico50.FooterRow.Cells(4).Visible = False
-            gvBiometrico50.FooterRow.Cells(5).Visible = False
-            gvBiometrico50.FooterRow.Cells(6).Visible = False
 
-            'gvBiometrico50.FooterRow.Cells(9).Text = String.Format("{0}:{1}", horPer + Fix(minPer / 60), minPer Mod 60)
-            'gvBiometrico50.FooterRow.Cells(10).Text = String.Format("{0}:{1}", horRec + Fix(minRec / 60), minRec Mod 60)
-            'gvBiometrico50.FooterRow.Cells(12).Text = String.Format("{0}:{1}", hor050 + Fix(min050 / 60), min050 Mod 60)
-            'gvBiometrico50.FooterRow.Cells(13).Text = String.Format("{0}:{1}", hor100 + Fix(min100 / 60), min100 Mod 60)
+            gvBiometrico50.FooterRow.Cells(5).Text = String.Format("{0}:{1}", horPer + Fix(minPer / 60), minPer Mod 60)
+            gvBiometrico50.FooterRow.Cells(6).Text = String.Format("{0}:{1}", hor050 + Fix(min050 / 60), min050 Mod 60)
+
+            SumTotal050(min050, minPer, hor050, horPer)
 
             lblSuplementario.Visible = True
         Else
@@ -130,19 +113,76 @@
         Dim dtTotal100 As DataTable = Session("dtTotal100")
         Dim dtExtra100 As DataTable = Session("dtExtra100")
         If dtExtra100.Rows.Count > 0 Then
-            gvBiometrico100.FooterRow.Cells(0).Text = "Total de Horas al 100% al mes a pagar"
-            gvBiometrico100.FooterRow.Cells(0).HorizontalAlign = HorizontalAlign.Right
-            gvBiometrico100.FooterRow.Cells(0).ColumnSpan = 5
-            gvBiometrico100.FooterRow.Cells(1).Text = dtTotal100.Rows(0).Item("TotalHoras100").ToString
-            gvBiometrico100.FooterRow.Cells(2).Visible = False
-            gvBiometrico100.FooterRow.Cells(3).Visible = False
-            gvBiometrico100.FooterRow.Cells(4).Visible = False
-            gvBiometrico100.FooterRow.Cells(5).Visible = False
-            gvBiometrico100.FooterRow.Cells(6).Visible = False
+            Dim horLab, horPer, horRec, hor100 As Integer
+            Dim minLab, minPer, minRec, min100 As Integer
+            For Each row As DataRow In dtExtra100.Rows
+                horLab = horLab + Convert.ToDateTime(row("Laborado")).Hour
+                minLab = minLab + Convert.ToDateTime(row("Laborado")).Minute
+                horPer = horPer + Convert.ToDateTime(row("HorasPermiso")).Hour
+                minPer = minPer + Convert.ToDateTime(row("HorasPermiso")).Minute
+                horRec = horRec + Convert.ToDateTime(row("HorasRecuperar")).Hour
+                minRec = minRec + Convert.ToDateTime(row("HorasRecuperar")).Minute
+                hor100 = hor100 + Convert.ToDateTime(row("Horas100")).Hour
+                min100 = min100 + Convert.ToDateTime(row("Horas100")).Minute
+            Next
+
+            gvBiometrico100.FooterRow.Cells(5).Text = String.Format("{0}:{1}", horRec + Fix(minRec / 60), minRec Mod 60)
+            gvBiometrico100.FooterRow.Cells(6).Text = String.Format("{0}:{1}", hor100 + Fix(min100 / 60), min100 Mod 60)
+
+            SumTotal100(min100, minRec, hor100, horRec)
+
             lblExtra.Visible = True
         Else
             lblExtra.Visible = False
         End If
+    End Sub
+
+    Private Sub SumTotal050(ByVal min050 As Integer, ByVal minPer As Integer, ByVal hor050 As Integer, ByVal horPer As Integer)
+        Dim horTot050, minTot050 As Integer
+
+        If min050 >= minPer Then
+            horTot050 = hor050 - horPer
+            minTot050 = min050 - minPer
+        Else
+            horTot050 = hor050 - horPer - 1
+            'minTot050 = ((min050 - (minPer + 60)) + 60) * (-1)
+            minTot050 = (minPer - (min050 + 60)) * (-1)
+        End If
+
+        Dim row As New GridViewRow(0, 0, DataControlRowType.Footer, DataControlRowState.Normal)
+        Dim cel0, cel050 As New TableCell()
+        cel0.Text = "Total de Horas al 50% al mes a pagar"
+        cel0.ColumnSpan = 6
+        cel0.HorizontalAlign = HorizontalAlign.Right
+        cel050.Text = String.Format("{0}:{1}", horTot050 + Fix(minTot050 / 60), minTot050 Mod 60)
+        row.Cells.Add(cel0)
+        row.Cells.Add(cel050)
+        gvBiometrico50.Controls(0).Controls.Add(row)
+
+    End Sub
+
+    Private Sub SumTotal100(ByVal min100 As Integer, ByVal minRec As Integer, ByVal hor100 As Integer, ByVal horRec As Integer)
+        Dim minTot100, horTot100 As Integer
+
+        If min100 >= minRec Then
+            horTot100 = hor100 - horRec
+            minTot100 = min100 - minRec
+        Else
+            horTot100 = hor100 - horRec - 1
+            'minTot100 = ((min100 - (minRec + 60)) + 60) * (-1)
+            minTot100 = (minRec - (min100 + 60)) * (-1)
+        End If
+
+        Dim row As New GridViewRow(0, 0, DataControlRowType.Footer, DataControlRowState.Normal)
+        Dim cel0, cel100 As New TableCell()
+        cel0.Text = "Total de Horas al 100% al mes a pagar"
+        cel0.ColumnSpan = 6
+        cel0.HorizontalAlign = HorizontalAlign.Right
+        cel100.Text = String.Format("{0}:{1}", horTot100 + Fix(minTot100 / 60), minTot100 Mod 60)
+        row.Cells.Add(cel0)
+        row.Cells.Add(cel100)
+        gvBiometrico100.Controls(0).Controls.Add(row)
+
     End Sub
 
 End Class
