@@ -129,7 +129,7 @@ Public Class LdapAuthentication
     Public Function MenuProcesar(ByVal UArea As String, ByVal UDep As String, ByVal UCargo As String) As Boolean
         Dim retorno As Boolean = False
         Dim rootWebConfig1 As System.Configuration.Configuration
-        rootWebConfig1 = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("/HorasExtrasWeb")
+        rootWebConfig1 = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~/")
         If (0 < rootWebConfig1.AppSettings.Settings.Count) Then
             Dim Area, Departamento, Cargo As System.Configuration.KeyValueConfigurationElement
             Area = rootWebConfig1.AppSettings.Settings("Area")

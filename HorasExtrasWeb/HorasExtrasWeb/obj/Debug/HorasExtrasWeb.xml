@@ -494,6 +494,33 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:HorasExtrasWeb.Maestro._lblTxtCargo">
+<summary>
+Control lblTxtCargo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Maestro._lblCargo">
+<summary>
+Control lblCargo.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Maestro._lblCargoId">
+<summary>
+Control lblCargoId.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:HorasExtrasWeb.Maestro._lblTxtAnio">
 <summary>
 Control lblTxtAnio.

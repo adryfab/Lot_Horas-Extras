@@ -36,6 +36,8 @@ BEGIN
 			, NOM.NOMINA_AREA AS 'AreaId'
 			, NOM.NOMINA_DEP1 AS 'Departamento'
 			, NOM.NOMINA_DEP AS 'DepartamentoId'
+			, NOM.NOMINA_CAL1 AS 'Cargo'
+			, NOM.NOMINA_CAL AS 'CargoId'
 	FROM	#tbPeriodo	AS PER 
 	LEFT	JOIN HorasExtSup.dbo.tbAprobaciones APR
 	ON		APR.CodigoEmp = @CodEmp 
