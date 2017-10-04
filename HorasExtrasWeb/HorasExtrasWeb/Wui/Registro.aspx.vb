@@ -73,6 +73,9 @@ Public Class Registro
 
         Dim adAuth As LdapAuthentication = New LdapAuthentication("")
         Master.procesar = adAuth.MenuProcesar(Master.areaId, Master.DepId, Master.CargoId)
+
+        CompFechaIni.ValueToCompare = Master.Inicio
+        ComFechFin.ValueToCompare = Master.Fin
     End Sub
 
     Private Function GrabarRegistros(ByVal rows As DataRow) As Integer
