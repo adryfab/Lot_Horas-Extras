@@ -655,24 +655,6 @@ Propiedad Master.
 Propiedad generada automáticamente.
 </remarks>
 </member>
-<member name="F:HorasExtrasWeb.Registro._lblAprobado">
-<summary>
-Control lblAprobado.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:HorasExtrasWeb.Registro._btnPrint">
-<summary>
-Control btnPrint.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:HorasExtrasWeb.Registro._NewReg2">
 <summary>
 Control NewReg2.
@@ -910,6 +892,24 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:HorasExtrasWeb.Registro._BtnAdd">
 <summary>
 Control BtnAdd.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Registro._lblAprobado">
+<summary>
+Control lblAprobado.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Registro._btnPrint">
+<summary>
+Control btnPrint.
 </summary>
 <remarks>
 Campo generado automáticamente.

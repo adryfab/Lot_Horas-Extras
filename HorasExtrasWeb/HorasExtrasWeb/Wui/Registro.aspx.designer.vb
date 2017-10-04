@@ -14,24 +14,6 @@ Option Explicit On
 Partial Public Class Registro
     
     '''<summary>
-    '''Control lblAprobado.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lblAprobado As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''Control btnPrint.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents btnPrint As Global.System.Web.UI.WebControls.ImageButton
-    
-    '''<summary>
     '''Control NewReg2.
     '''</summary>
     '''<remarks>
@@ -273,6 +255,24 @@ Partial Public Class Registro
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents BtnAdd As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control lblAprobado.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblAprobado As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control btnPrint.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnPrint As Global.System.Web.UI.WebControls.ImageButton
     
     '''<summary>
     '''Propiedad Master.

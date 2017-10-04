@@ -54,7 +54,7 @@
         <h2 class="w3-opacity" style="text-shadow:2px 2px 0 #444">Registro de Horas Extras</h2>
     </div>
     <div>
-        <table>
+        <%--<table>
             <tr class="w3-small">
                 <td>
                     <asp:Label ID="lblAprobado" runat="server" Text="Aprobado" Visible="false" class="w3-red"/>
@@ -64,7 +64,7 @@
                         CausesValidation="False" />
                 </td>
             </tr>
-        </table>
+        </table>--%>
     </div>
     <div id="NewReg2" runat="server" visible="false">
         <table>
@@ -313,7 +313,20 @@
         </asp:GridView>
     </div>
     <div>
-        <asp:Button ID="BtnAdd" runat="server" Text="Agregar Registro" />
+        <table>
+            <tr>
+                <td>
+                    <asp:Button ID="BtnAdd" runat="server" Text="Agregar Registro" />
+                </td>
+                <td>
+                    <asp:Label ID="lblAprobado" runat="server" Text="Aprobado" Visible="false" class="w3-red"/>
+                </td>
+                <td>
+                    <asp:ImageButton ID="btnPrint" runat="server" CommandName="Imprimir" ImageUrl="../icons/impresora.ico" ToolTipText="Imprimir" 
+                        CausesValidation="False" />
+                </td>
+            </tr>
+        </table>
     </div>
     <br />    
 </asp:Content>
