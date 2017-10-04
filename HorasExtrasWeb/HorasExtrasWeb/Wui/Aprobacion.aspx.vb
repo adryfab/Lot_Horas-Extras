@@ -57,6 +57,11 @@
         Master.Periodo = dtEmpleado.Rows(0)("Periodo")
         Master.Inicio = dtEmpleado.Rows(0)("FechaInicial")
         Master.Fin = dtEmpleado.Rows(0)("FechaFinal")
+        Master.Cargo = dtEmpleado.Rows(0)("Cargo")
+        Master.CargoId = dtEmpleado.Rows(0)("CargoId")
+
+        Dim adAuth As LdapAuthentication = New LdapAuthentication("")
+        Master.procesar = adAuth.MenuProcesar(Master.areaId, Master.DepId, Master.CargoId)
     End Sub
 
     Private Sub BindDataGrid()
