@@ -31,6 +31,8 @@ BEGIN
 			, NOM.NOMINA_AREA AS 'AreaId'
 			, NOM.NOMINA_DEP1 AS 'Departamento'
 			, NOM.NOMINA_DEP AS 'DepartamentoId'
+			, NOM.NOMINA_CAL1 AS 'Cargo'
+			, NOM.NOMINA_CAL AS 'CargoId'
 			, CASE WHEN ISNULL(UsuarioSuper,'') <> '' OR ISNULL(UsuarioJefe,'') <> '' THEN 1 ELSE 0 END AS 'Aprobado'
 	FROM	BIOMETRICO.TCONTROL.dbo.TBL_ASISTENCIA TBL
 	INNER	JOIN #tbPeriodo	AS PER 

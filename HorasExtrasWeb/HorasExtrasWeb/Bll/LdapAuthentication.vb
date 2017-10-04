@@ -126,4 +126,22 @@ Public Class LdapAuthentication
         Return flag2
     End Function
 
+    Public Function MenuProcesar(ByVal UArea As String, ByVal UDep As String, ByVal UCargo As String) As Boolean
+        Dim retorno As Boolean = False
+        Dim rootWebConfig1 As System.Configuration.Configuration
+        rootWebConfig1 = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("/HorasExtrasWeb")
+        If (0 < rootWebConfig1.AppSettings.Settings.Count) Then
+            Dim Area, Departamento, Cargo As System.Configuration.KeyValueConfigurationElement
+            Area = rootWebConfig1.AppSettings.Settings("Area")
+            Departamento = rootWebConfig1.AppSettings.Settings("Departamento")
+            Cargo = rootWebConfig1.AppSettings.Settings("Cargo")
+            If Area.Value = UArea And Departamento.Value = UDep And Cargo.Value = UCargo Then
+                retorno = True
+            Else
+                retorno = False
+            End If
+        End If
+        Return retorno
+    End Function
+
 End Class

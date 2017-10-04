@@ -27,7 +27,7 @@
         </div>
         <div>
             <table>
-                <tr class="w3-small">
+                <tr class="w3-tiny">
                     <td>
                         <asp:Label ID="lblTxtUsuario" runat="server" Text="Usuario: " />
                     </td>
@@ -53,6 +53,13 @@
                     <td class="w3-tag w3-pale-blue">
                         <asp:Label ID="lblDep" runat="server" Text="" />
                         <asp:Label ID="lblDepId" runat="server" Text="lblDepId" Visible="false"/>
+                    </td>
+                    <td>
+                        <asp:Label ID="lblTxtCargo" runat="server" Text="Cargo: "/>
+                    </td>
+                    <td class="w3-tag w3-pale-blue">
+                        <asp:Label ID="lblCargo" runat="server" Text=""/>
+                        <asp:Label ID="lblCargoId" runat="server" Text="lblCargoId" Visible="false"/>
                     </td>
                     <td>
                         <asp:Label ID="lblTxtAnio" runat="server" Text="Año: " />

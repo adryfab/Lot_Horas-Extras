@@ -131,6 +131,33 @@ Partial Public Class Maestro
     Protected WithEvents lblDepId As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
+    '''Control lblTxtCargo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblTxtCargo As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control lblCargo.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblCargo As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
+    '''Control lblCargoId.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblCargoId As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''Control lblTxtAnio.
     '''</summary>
     '''<remarks>

@@ -100,6 +100,24 @@
         End Set
     End Property
 
+    Public Property Cargo() As String
+        Get
+            Return CType(ViewState("Cargo"), String)
+        End Get
+        Set(ByVal Value As String)
+            ViewState("Cargo") = Value
+        End Set
+    End Property
+
+    Public Property CargoId() As String
+        Get
+            Return CType(ViewState("CargoId"), String)
+        End Get
+        Set(ByVal Value As String)
+            ViewState("CargoId") = Value
+        End Set
+    End Property
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         lblUsuario.Text = Me.usuario
         lblCodigo.Text = Me.codigo
@@ -112,6 +130,8 @@
         lblPeriodo.Text = Me.Periodo
         lblInicio.Text = Me.Inicio
         lblFin.Text = Me.Fin
+        lblCargo.Text = Me.Cargo
+        lblCargoId.Text = Me.CargoId
     End Sub
 
 End Class
