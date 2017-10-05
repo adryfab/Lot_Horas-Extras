@@ -102,7 +102,11 @@
         Try
             'Procesa 50%
             Dim path050 As String = "C:\Temp\Horas50%_" + Master.Año + "-" + Master.Periodo + ".txt"
+            If System.IO.File.Exists(path050) Then
+                System.IO.File.Delete(path050)
+            End If
             file = My.Computer.FileSystem.OpenTextFileWriter(path050, True)
+            'file.Flush()
             For Each row As DataRow In dt050.Rows
                 file.WriteLine(row("Cedula") + tab + row("Cod") + tab + row("50"))
             Next
@@ -110,7 +114,11 @@
 
             'Procesa 100%
             Dim path100 As String = "C:\Temp\Horas100%_" + Master.Año + "-" + Master.Periodo + ".txt"
+            If System.IO.File.Exists(path100) Then
+                System.IO.File.Delete(path100)
+            End If
             file = My.Computer.FileSystem.OpenTextFileWriter(path100, True)
+            'file.Flush()
             For Each row As DataRow In dt100.Rows
                 file.WriteLine(row("Cedula") + tab + row("Cod") + tab + row("100"))
             Next
