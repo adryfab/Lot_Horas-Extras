@@ -152,6 +152,8 @@ Public Class Registro
                 Dim dateFin As DateTime = fecha.ToShortDateString + " " + lblFin.Text
                 If inicio > dateInicio And inicio < dateFin Then
                     result = False 'Se encuentra dentro del rango
+                    lblError.Text = "Fecha y hora ya se encuentran en el grid"
+                    lblError.Visible = True
                     Exit For
                 Else
                     result = True 'Está fuera del rango
@@ -356,6 +358,8 @@ Public Class Registro
         Permisotxt.Text = Nothing
         RecuperarTxt.Text = Nothing
         BtnAdd.Enabled = True
+        lblError.Text = Nothing
+        lblError.Visible = False
     End Sub
 
     Protected Sub btnAgregar_Click(sender As Object, e As ImageClickEventArgs) Handles btnAgregar.Click
@@ -429,16 +433,20 @@ Public Class Registro
 
             'La hora de ingreso debe ser mayor que la hora de salida
             If ingreso > salida Then
+                lblError.Text = "La hora de ingreso debe ser mayor que la hora de salida"
+                lblError.Visible = True
                 Return False
             End If
 
             resultado = True
-        End If
-
-        If IngresoTxt.Text = "" And SalidaTxt.Text = "" And (Permisotxt.Text <> "" Or RecuperarTxt.Text <> "") Then
-            resultado = True
         Else
-            resultado = False
+            If IngresoTxt.Text = "" And SalidaTxt.Text = "" And (Permisotxt.Text <> "" Or RecuperarTxt.Text <> "") Then
+                resultado = True
+            Else
+                lblError.Text = "Debe ingresar alguna hora"
+                lblError.Visible = True
+                resultado = False
+            End If
         End If
 
         Return resultado

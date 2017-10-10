@@ -330,6 +330,9 @@
                     <asp:ImageButton ID="btnPrint" runat="server" CommandName="Imprimir" ImageUrl="../icons/impresora.ico" ToolTipText="Imprimir" 
                         CausesValidation="False" />
                 </td>
+                <td>
+                <asp:Label ID="lblError" runat="server" Text="" Visible="false" CssClass="w3-panel w3-red"/>
+                </td>
             </tr>
         </table>
     </div>
