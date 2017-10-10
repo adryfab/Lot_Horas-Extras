@@ -78,10 +78,6 @@ Public Class Procesar
         lblError.Visible = False
     End Sub
 
-    Protected Sub btnProcesar_Click(sender As Object, e As EventArgs) Handles btnProcesar.Click
-        GenerarTotales()
-    End Sub
-
     Private Sub GenerarTotales()
         Dim SQLConexionBD As New SQLConexionBD()
         Dim dsTotales As New DataSet
@@ -93,23 +89,22 @@ Public Class Procesar
             Exit Sub
         End If
         dtTotal050 = dsTotales.Tables(0)
+        Session("dtTotal050") = dtTotal050
         dtTotal100 = dsTotales.Tables(1)
+        Session("dtTotal100") = dtTotal100
 
-        GenerarArchivo(dtTotal050, dtTotal100)
+        'GenerarArchivo(dtTotal050, dtTotal100)
     End Sub
 
-    Private Sub GenerarArchivo(ByVal dt050 As DataTable, ByVal dt100 As DataTable)
-        Dim file As System.IO.StreamWriter
-        Dim tab As String = vbTab
+    Private Sub GenerarArchivo050(ByVal dt050 As DataTable)
         Try
-            'Procesa 50%            
+            Dim file As System.IO.StreamWriter
+            Dim tab As String = vbTab
             Dim name050 As String = "Horas50%_" + Master.Año + "-" + Master.Periodo + ".txt"
-            Dim path050 As String = "C:\Temp\"
-            'Dim path050 As String = Request.PhysicalApplicationPath
+            Dim path050 As String = RutaArchivo()
             Dim namePath050 As String = path050 + name050
-
-            If System.IO.File.Exists(path050) Then
-                System.IO.File.Delete(path050)
+            If System.IO.File.Exists(namePath050) Then
+                System.IO.File.Delete(namePath050)
             End If
             file = My.Computer.FileSystem.OpenTextFileWriter(namePath050, True)
             For Each row As DataRow In dt050.Rows
@@ -117,64 +112,95 @@ Public Class Procesar
             Next
             file.Close()
             DownloadFile(namePath050, True)
-            'Una vez descargado, se elimina
-            If System.IO.File.Exists(path050) Then
-                System.IO.File.Delete(path050)
-            End If
-
-            'Procesa 100%
-            Dim path100 As String = "C:\Temp\Horas100%_" + Master.Año + "-" + Master.Periodo + ".txt"
-            If System.IO.File.Exists(path100) Then
-                System.IO.File.Delete(path100)
-            End If
-            file = My.Computer.FileSystem.OpenTextFileWriter(path100, True)
-            'file.Flush()
-            For Each row As DataRow In dt100.Rows
-                file.WriteLine(row("Cedula") + tab + row("Cod") + tab + row("100"))
-            Next
-            file.Close()
-
-            lblOk.Text = "Archivos procesados"
-            lblOk.Visible = True
         Catch ex As Exception
             lblError.Text = ex.Message
             lblError.Visible = True
         End Try
     End Sub
 
+    Private Sub GenerarArchivo100(ByVal dt100 As DataTable)
+        Try
+            Dim file As System.IO.StreamWriter
+            Dim tab As String = vbTab
+            Dim name100 As String = "Horas100%_" + Master.Año + "-" + Master.Periodo + ".txt"
+            Dim path100 As String = RutaArchivo()
+            Dim namePath100 As String = path100 + name100
+            If System.IO.File.Exists(path100) Then
+                System.IO.File.Delete(path100)
+            End If
+            File = My.Computer.FileSystem.OpenTextFileWriter(namePath100, True)
+            For Each row As DataRow In dt100.Rows
+                file.WriteLine(row("Cedula") + tab + row("Cod") + tab + row("100"))
+            Next
+            File.Close()
+            DownloadFile(namePath100, True)
+        Catch ex As Exception
+            lblError.Text = ex.Message
+            lblError.Visible = True
+        End Try
+    End Sub
+
+    Private Function RutaArchivo() As String
+        Dim rootWebConfig1 As System.Configuration.Configuration
+        Dim Ruta As System.Configuration.KeyValueConfigurationElement
+        rootWebConfig1 = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("~/")
+        If (0 < rootWebConfig1.AppSettings.Settings.Count) Then
+            Ruta = rootWebConfig1.AppSettings.Settings("Ruta")
+        End If
+        If Ruta.Value = "" Then Ruta.Value = "C:\Temp\"
+        Return Ruta.Value
+    End Function
+
     Private Sub DownloadFile(ByVal fname As String, ByVal forceDownload As Boolean)
-        'Dim path As Path
-        Dim fullpath = Path.GetFullPath(fname)
-        Dim name = Path.GetFileName(fullpath)
-        Dim ext = Path.GetExtension(fullpath)
-        Dim type As String = ""
+        Try
+            Dim fullpath = Path.GetFullPath(fname)
+            Dim name = Path.GetFileName(fullpath)
+            Dim ext = Path.GetExtension(fullpath)
+            Dim type As String = ""
 
-        If Not IsDBNull(ext) Then
-            ext = LCase(ext)
-        End If
+            If Not IsDBNull(ext) Then
+                ext = LCase(ext)
+            End If
 
-        Select Case ext
-            Case ".htm", ".html"
-                type = "text/HTML"
-            Case ".txt"
-                type = "text/plain"
-            Case ".doc", ".rtf"
-                type = "Application/msword"
-            Case ".csv", ".xls"
-                type = "Application/x-msexcel"
-            Case Else
-                type = "text/plain"
-        End Select
+            Select Case ext
+                Case ".htm", ".html"
+                    type = "text/HTML"
+                Case ".txt"
+                    type = "text/plain"
+                Case ".doc", ".rtf"
+                    type = "Application/msword"
+                Case ".csv", ".xls"
+                    type = "Application/x-msexcel"
+                Case Else
+                    type = "text/plain"
+            End Select
 
-        If (forceDownload) Then
-            Response.AppendHeader("content-disposition", "attachment; filename=" + name)
-        End If
-        If type <> "" Then
-            Response.ContentType = type
-        End If
+            If (forceDownload) Then
+                Response.AppendHeader("content-disposition", "attachment; filename=" + name)
+            End If
+            If type <> "" Then
+                Response.ContentType = type
+            End If
 
-        Response.WriteFile(fullpath)
-        Response.End()
+            Response.WriteFile(fullpath)
+            Response.End()
+        Catch ex As Exception
+            lblError.Text = ex.Message
+            lblError.Visible = True
+        End Try
+
+    End Sub
+
+    Protected Sub btn050_Click(sender As Object, e As EventArgs) Handles btn050.Click
+        If Session("dtTotal050") Is Nothing Then GenerarTotales()
+        Dim dtTotal050 As DataTable = Session("dtTotal050")
+        GenerarArchivo050(dtTotal050)
+    End Sub
+
+    Protected Sub btn100_Click(sender As Object, e As EventArgs) Handles btn100.Click
+        If Session("dtTotal100") Is Nothing Then GenerarTotales()
+        Dim dtTotal100 As DataTable = Session("dtTotal100")
+        GenerarArchivo100(dtTotal100)
     End Sub
 
 #End Region

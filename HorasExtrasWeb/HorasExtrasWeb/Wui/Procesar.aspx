@@ -6,8 +6,9 @@
     <div class="w3-container w3-center w3-panel w3-blue">
         <h2 class="w3-opacity" style="text-shadow:2px 2px 0 #444">Procesar</h2>
     </div>
-    <div>
-        <asp:Button ID="btnProcesar" runat="server" Text="Generar Archivos" />
+    <div>        
+        <asp:Button ID="btn050" runat="server" Text="Generar Archivo 50%" />
+        <asp:Button ID="btn100" runat="server" Text="Generar Archivo 100%" />
         <asp:Label ID="lblOk" runat="server" Text="" Visible="false" CssClass="w3-panel w3-blue"/>
         <asp:Label ID="lblError" runat="server" Text="" Visible="false" CssClass="w3-panel w3-red"/>
     </div>

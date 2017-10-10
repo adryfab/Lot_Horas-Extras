@@ -14,13 +14,22 @@ Option Explicit On
 Partial Public Class Procesar
     
     '''<summary>
-    '''Control btnProcesar.
+    '''Control btn050.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btnProcesar As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btn050 As Global.System.Web.UI.WebControls.Button
+    
+    '''<summary>
+    '''Control btn100.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btn100 As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
     '''Control lblOk.

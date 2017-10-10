@@ -611,9 +611,18 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:HorasExtrasWeb.Procesar._btnProcesar">
+<member name="F:HorasExtrasWeb.Procesar._btn050">
 <summary>
-Control btnProcesar.
+Control btn050.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Procesar._btn100">
+<summary>
+Control btn100.
 </summary>
 <remarks>
 Campo generado automáticamente.
