@@ -1,4 +1,6 @@
-﻿Public Class Procesar
+﻿Imports System.IO
+
+Public Class Procesar
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -100,17 +102,25 @@
         Dim file As System.IO.StreamWriter
         Dim tab As String = vbTab
         Try
-            'Procesa 50%
-            Dim path050 As String = "C:\Temp\Horas50%_" + Master.Año + "-" + Master.Periodo + ".txt"
+            'Procesa 50%            
+            Dim name050 As String = "Horas50%_" + Master.Año + "-" + Master.Periodo + ".txt"
+            Dim path050 As String = "C:\Temp\"
+            'Dim path050 As String = Request.PhysicalApplicationPath
+            Dim namePath050 As String = path050 + name050
+
             If System.IO.File.Exists(path050) Then
                 System.IO.File.Delete(path050)
             End If
-            file = My.Computer.FileSystem.OpenTextFileWriter(path050, True)
-            'file.Flush()
+            file = My.Computer.FileSystem.OpenTextFileWriter(namePath050, True)
             For Each row As DataRow In dt050.Rows
                 file.WriteLine(row("Cedula") + tab + row("Cod") + tab + row("50"))
             Next
             file.Close()
+            DownloadFile(namePath050, True)
+            'Una vez descargado, se elimina
+            If System.IO.File.Exists(path050) Then
+                System.IO.File.Delete(path050)
+            End If
 
             'Procesa 100%
             Dim path100 As String = "C:\Temp\Horas100%_" + Master.Año + "-" + Master.Periodo + ".txt"
@@ -130,6 +140,41 @@
             lblError.Text = ex.Message
             lblError.Visible = True
         End Try
+    End Sub
+
+    Private Sub DownloadFile(ByVal fname As String, ByVal forceDownload As Boolean)
+        'Dim path As Path
+        Dim fullpath = Path.GetFullPath(fname)
+        Dim name = Path.GetFileName(fullpath)
+        Dim ext = Path.GetExtension(fullpath)
+        Dim type As String = ""
+
+        If Not IsDBNull(ext) Then
+            ext = LCase(ext)
+        End If
+
+        Select Case ext
+            Case ".htm", ".html"
+                type = "text/HTML"
+            Case ".txt"
+                type = "text/plain"
+            Case ".doc", ".rtf"
+                type = "Application/msword"
+            Case ".csv", ".xls"
+                type = "Application/x-msexcel"
+            Case Else
+                type = "text/plain"
+        End Select
+
+        If (forceDownload) Then
+            Response.AppendHeader("content-disposition", "attachment; filename=" + name)
+        End If
+        If type <> "" Then
+            Response.ContentType = type
+        End If
+
+        Response.WriteFile(fullpath)
+        Response.End()
     End Sub
 
 #End Region
