@@ -377,7 +377,9 @@ Public Class Registro
         row("CodigoEmp") = 0
         row("Dia") = ""
         row("Fecha") = FechaTxt.Text
+        If String.IsNullOrEmpty(IngresoTxt.Text) Then IngresoTxt.Text = "00:00"
         row("Ingreso") = IngresoTxt.Text
+        If String.IsNullOrEmpty(SalidaTxt.Text) Then SalidaTxt.Text = "00:00"
         row("Salida") = SalidaTxt.Text
         row("Laborado") = "00:00"
         row("Atrasado") = "00:00"
@@ -385,13 +387,9 @@ Public Class Registro
         row("Horas0") = "00:00"
         row("Horas50") = "00:00"
         row("Horas100") = "00:00"
-        If String.IsNullOrEmpty(Permisotxt.Text) Then
-            Permisotxt.Text = "00:00"
-        End If
+        If String.IsNullOrEmpty(Permisotxt.Text) Then Permisotxt.Text = "00:00"
         row("HorasPermiso") = Permisotxt.Text
-        If String.IsNullOrEmpty(RecuperarTxt.Text) Then
-            RecuperarTxt.Text = "00:00"
-        End If
+        If String.IsNullOrEmpty(RecuperarTxt.Text) Then RecuperarTxt.Text = "00:00"
         row("HorasRecuperar") = RecuperarTxt.Text
         row("Justificativo") = DetalleTxt.Text
         row("Anio") = Master.Año
@@ -417,23 +415,32 @@ Public Class Registro
     Private Function Validaciones() As Boolean
         Dim resultado As Boolean = False
 
-        'Valida si lo ingresado es una hora correcta (mm:ss)
-        If IsDate(IngresoTxt.Text) = False Then
-            Return False
-        End If
-        If IsDate(SalidaTxt.Text) = False Then
-            Return False
+        If IngresoTxt.Text <> "" And SalidaTxt.Text <> "" Then
+            'Valida si lo ingresado es una hora correcta (mm:ss)
+            If IsDate(IngresoTxt.Text) = False Then
+                Return False
+            End If
+            If IsDate(SalidaTxt.Text) = False Then
+                Return False
+            End If
+
+            Dim ingreso As DateTime = FechaTxt.Text + " " + IngresoTxt.Text
+            Dim salida As DateTime = FechaTxt.Text + " " + SalidaTxt.Text
+
+            'La hora de ingreso debe ser mayor que la hora de salida
+            If ingreso > salida Then
+                Return False
+            End If
+
+            resultado = True
         End If
 
-        Dim ingreso As DateTime = FechaTxt.Text + " " + IngresoTxt.Text
-        Dim salida As DateTime = FechaTxt.Text + " " + SalidaTxt.Text
-
-        'La hora de ingreso debe ser mayor que la hora de salida
-        If ingreso > salida Then
-            Return False
+        If IngresoTxt.Text = "" And SalidaTxt.Text = "" And (Permisotxt.Text <> "" Or RecuperarTxt.Text <> "") Then
+            resultado = True
+        Else
+            resultado = False
         End If
 
-        resultado = True
         Return resultado
     End Function
 

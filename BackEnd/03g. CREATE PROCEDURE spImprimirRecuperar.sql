@@ -76,7 +76,7 @@ BEGIN
 		AND		PER.periodo = HE.PeriodoId
 		WHERE	HE.Activo = 1
 		AND		HE.CodigoEmp = @CodEmp 
-		AND		DATEDIFF(SECOND, '00:00', HE.Horas50) > 0
+		AND		DATEDIFF(SECOND, '00:00', HE.Horas50) > 0 OR DATEDIFF(SECOND, '00:00', HE.HorasPermiso) > 0
 	) AS X
 
 	--Informacion del biometrico y registrado al 100% EXTRAORDINARIAS
@@ -117,7 +117,7 @@ BEGIN
 		AND		PER.periodo = HE.PeriodoId
 		WHERE	HE.Activo = 1
 		AND		HE.CodigoEmp = @CodEmp 
-		AND		DATEDIFF(SECOND, '00:00', HE.Horas100) > 0
+		AND		DATEDIFF(SECOND, '00:00', HE.Horas100) > 0 OR DATEDIFF(SECOND, '00:00', HE.HorasRecuperar) > 0
 	) AS X
 
 	--Informacion de los superiores
@@ -140,59 +140,6 @@ BEGIN
 	ON ANOM.NOMINA_ID = ARE.AREA_EM
 	WHERE NOM.NOMINA_ID = @CodEmp
 
-	--Suma horas del 50% SUPLEMENTARIO
-	SELECT RIGHT( convert(char(8), dateadd(second, SUM(X.Horas50), ''), 114) ,5) AS 'TotalHoras50'
-	FROM
-	(
-		SELECT	TBL.min_150 AS 'Horas50'
-		FROM	BIOMETRICO.TCONTROL.dbo.TBL_ASISTENCIA TBL
-		INNER	JOIN #tbPeriodo	AS PER 
-		ON		TBL.Fecha_Ingreso between PER.FechaInicial and PER.FechaFinal
-		LEFT	JOIN tbHorasExtras AS HOR
-		ON		HOR.CodigoEmp = TBL.EMP_ID
-		AND		HOR.Fecha = TBL.Fecha_Ingreso
-		AND		CONVERT(VARCHAR(5),TBL.Hora_Ingreso, 114) = CONVERT(VARCHAR(5),HOR.HoraIngreso, 114)
-		WHERE	TBL.EMP_ID = @CodEmp
-		AND		(TBL.min_150 > 0)
-		AND NOT EXISTS (SELECT 1 FROM tbHorasExtras EX WHERE EX.CodigoEmp = TBL.EMP_ID AND EX.Fecha = TBL.Fecha_Ingreso AND EX.Activo = 0)
-		UNION
-		SELECT	DATEDIFF(MINUTE, '00:00', HE.Horas50) AS 'Horas50'
-		FROM	HorasExtSup.dbo.tbHorasExtras HE
-		INNER	JOIN #tbPeriodo	AS PER 
-		ON		PER.anio = HE.Anio
-		AND		PER.periodo = HE.PeriodoId
-		WHERE	HE.Activo = 1
-		AND		HE.CodigoEmp = @CodEmp 
-		AND		DATEDIFF(SECOND, '00:00', HE.Horas50) > 0
-	) AS X
-	
-	--Suma horas del 100% EXTRAORDINARIO
-	SELECT RIGHT( convert(char(8), dateadd(second, SUM(X.Horas100), ''), 114) ,5) AS 'TotalHoras100'
-	FROM
-	(
-		SELECT	TBL.min_200 AS 'Horas100'
-		FROM	BIOMETRICO.TCONTROL.dbo.TBL_ASISTENCIA TBL
-		INNER	JOIN #tbPeriodo	AS PER 
-		ON		TBL.Fecha_Ingreso between PER.FechaInicial and PER.FechaFinal
-		LEFT	JOIN tbHorasExtras AS HOR
-		ON		HOR.CodigoEmp = TBL.EMP_ID
-		AND		HOR.Fecha = TBL.Fecha_Ingreso
-		AND		CONVERT(VARCHAR(5),TBL.Hora_Ingreso, 114) = CONVERT(VARCHAR(5),HOR.HoraIngreso, 114)
-		WHERE	TBL.EMP_ID = @CodEmp
-		AND		(TBL.min_200 > 0)
-		AND NOT EXISTS (SELECT 1 FROM tbHorasExtras EX WHERE EX.CodigoEmp = TBL.EMP_ID AND EX.Fecha = TBL.Fecha_Ingreso AND EX.Activo = 0)
-		UNION
-		SELECT	DATEDIFF(MINUTE, '00:00', HE.Horas100) AS 'Horas100'
-		FROM	HorasExtSup.dbo.tbHorasExtras HE
-		INNER	JOIN #tbPeriodo	AS PER 
-		ON		PER.anio = HE.Anio
-		AND		PER.periodo = HE.PeriodoId
-		WHERE	HE.Activo = 1
-		AND		HE.CodigoEmp = @CodEmp 
-		AND		DATEDIFF(SECOND, '00:00', HE.Horas100) > 0
-	) AS X
-
 	DROP TABLE #tbPeriodo
-
 END
 GO

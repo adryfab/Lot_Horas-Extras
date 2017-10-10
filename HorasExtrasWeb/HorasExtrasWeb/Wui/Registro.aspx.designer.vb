@@ -194,24 +194,6 @@ Partial Public Class Registro
     Protected WithEvents ValFecha As Global.System.Web.UI.WebControls.RequiredFieldValidator
     
     '''<summary>
-    '''Control ValIngreso.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ValIngreso As Global.System.Web.UI.WebControls.RequiredFieldValidator
-    
-    '''<summary>
-    '''Control ValSalida.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ValSalida As Global.System.Web.UI.WebControls.RequiredFieldValidator
-    
-    '''<summary>
     '''Control ValJustifica.
     '''</summary>
     '''<remarks>

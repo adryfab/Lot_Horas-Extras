@@ -22,8 +22,6 @@
         Dim dtSuple50 As New DataTable
         Dim dtExtra100 As New DataTable
         Dim dtJefes As New DataTable
-        Dim dtTotal50 As New DataTable
-        Dim dtTotal100 As New DataTable
 
         Dim user As String
         If (Request.Cookies("Usuario") IsNot Nothing) Then
@@ -42,16 +40,12 @@
         dtSuple50 = dsTablas.Tables(2)
         dtExtra100 = dsTablas.Tables(3)
         dtJefes = dsTablas.Tables(4)
-        dtTotal50 = dsTablas.Tables(5)
-        dtTotal100 = dsTablas.Tables(6)
 
         Session("dtFechas") = dtFechas
         Session("dtEmpleado") = dtEmpleado
         Session("dtSuple50") = dtSuple50
         Session("dtExtra100") = dtExtra100
         Session("dtJefes") = dtJefes
-        Session("dtTotal50") = dtTotal50
-        Session("dtTotal100") = dtTotal100
 
         BindDataGrid()
         Cabecera()
@@ -84,7 +78,6 @@
     End Sub
 
     Private Sub Totales()
-        Dim dtTotal50 As DataTable = Session("dtTotal50")
         Dim dtSuple50 As DataTable = Session("dtSuple50")
         If dtSuple50.Rows.Count > 0 Then
             Dim horLab, horPer, horRec, hor050 As Integer
@@ -110,7 +103,6 @@
             lblSuplementario.Visible = False
         End If
 
-        Dim dtTotal100 As DataTable = Session("dtTotal100")
         Dim dtExtra100 As DataTable = Session("dtExtra100")
         If dtExtra100.Rows.Count > 0 Then
             Dim horLab, horPer, horRec, hor100 As Integer

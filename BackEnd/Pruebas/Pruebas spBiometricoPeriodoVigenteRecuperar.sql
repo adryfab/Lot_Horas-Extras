@@ -10,7 +10,7 @@ SELECT @UsuarioId = '009275'--glavayen --'012042'--cguznay
 BEGIN
 	--Obtiene el codigo del empleado
 	DECLARE @CodEmp int
-	SELECT @CodEmp = @UsuarioId
+	SELECT	@CodEmp	 = @UsuarioId
 
 	--Obtiene el ultimo periodo 
 	SELECT	 TOP 1 
@@ -22,30 +22,7 @@ BEGIN
 	FROM BIOMETRICO.TCONTROL.dbo.TBL_PERIODO 
 	ORDER BY anio DESC, periodo DESC
 
-	-- CREATE TABLE #BIOMETRICO
-	-- (
-		 -- CodigoEmp		nvarchar(12)	NULL
-		-- ,Dia			varchar(3)		NULL
-		-- ,Fecha			datetime		NULL
-		-- ,Ingreso		datetime		NULL
-		-- ,Salida			datetime		NULL
-		-- ,Laborado		datetime		NULL
-		-- ,Atrasado		datetime		NULL
-		-- ,Anticipado		datetime		NULL
-		-- ,Horas0			datetime		NULL
-		-- ,Horas50		datetime		NULL
-		-- ,Horas100		datetime		NULL
-		-- ,Justificativo	varchar(max)	NULL
-		-- ,HorasExtrasId	bigint			NULL
-		-- ,Anio			smallint		NULL
-		-- ,Periodo		smallint		NULL
-		-- ,Activo			bit				NULL
-		-- ,HorasPermiso	datetime		NULL
-		-- ,HorasRecuperar	datetime		NULL
-	-- )
-
 	--Obtiene la informacion del biometrico
-	--INSERT INTO #BIOMETRICO
 	SELECT	  
 			  TBL.EMP_ID AS 'CodigoEmp'
 			, SUBSTRING(dbo.fnObtenerNombreDia(TBL.Fecha_Ingreso), 1, 3) AS 'Dia'
@@ -65,9 +42,10 @@ BEGIN
 			, ISNULL(HOR.Activo,1) AS 'Activo'
 			, TBL.Fecha_Ingreso +' '+ '00:00' AS 'HorasPermiso'
 			, TBL.Fecha_Ingreso +' '+ '00:00'  AS 'HorasRecuperar'
+			, 1 AS 'Biometrico'
 	FROM	BIOMETRICO.TCONTROL.dbo.TBL_ASISTENCIA TBL
 	INNER	JOIN #tbPeriodo	AS PER 
-	ON		TBL.Fecha_Ingreso between PER.FechaInicial and PER.FechaFinal
+	ON		TBL.Fecha_Ingreso between PER.FechaInicial and PER.FechaFinal  	
 	LEFT	JOIN tbHorasExtras AS HOR
 	ON		HOR.CodigoEmp = TBL.EMP_ID
 	AND		HOR.Fecha = TBL.Fecha_Ingreso
@@ -97,6 +75,7 @@ BEGIN
 			, ISNULL(HE.Activo,1) AS 'Activo'
 			, CONVERT(VARCHAR,HE.Fecha) +' '+ CONVERT(VARCHAR(5),HE.HorasPermiso,114) AS 'HorasPermiso'
 			, CONVERT(VARCHAR,HE.Fecha) +' '+ CONVERT(VARCHAR(5),HE.HorasRecuperar,114) AS 'HorasRecuperar'
+			, HE.Biometrico AS 'Biometrico'
 	FROM HorasExtSup.dbo.tbHorasExtras HE
 	INNER	JOIN #tbPeriodo	AS PER 
 	ON		PER.anio = HE.Anio
@@ -105,34 +84,7 @@ BEGIN
 	AND HE.CodigoEmp = @CodEmp 
 	ORDER BY 3, 4
 
-	--SELECT * FROM #BIOMETRICO
-
-	--DATOS DEL EMPLEADO
-	SELECT	  @CodEmp AS 'CodigoEmp'
-			, PER.anio AS 'Anio'
-			, PER.periodo AS 'Periodo'
-			, PER.FechaInicial AS 'FechaInicial'
-			, PER.FechaFinal AS 'FechaFinal'
-			, CASE WHEN ISNULL(UsuarioSuper,'') <> '' OR ISNULL(UsuarioJefe,'') <> '' THEN 1 ELSE 0 END AS 'Aprobado'
-			, NOM.NOMINA_AREA1 AS 'Area'
-			, NOM.NOMINA_AREA AS 'AreaId'
-			, NOM.NOMINA_DEP1 AS 'Departamento'
-			, NOM.NOMINA_DEP AS 'DepartamentoId'
-	FROM	#tbPeriodo	AS PER 
-	LEFT	JOIN HorasExtSup.dbo.tbAprobaciones APR
-	ON		APR.CodigoEmp = @CodEmp 
-	INNER	JOIN BIOMETRICO.ONLYCONTROL.dbo.NOMINA NOM
-	ON		NOM.NOMINA_ID = @CodEmp
-	AND		APR.Anio = PER.anio
-	AND		APR.PeriodoId = PER.periodo
-
-	----TOTALES
-	--SELECT 
-	--		(SUM(DATEPART(HOUR,Horas50))) AS 'Horas50'
-	--FROM #BIOMETRICO
-
 	DROP TABLE #tbPeriodo
-	--DROP TABLE #BIOMETRICO
 END
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 /*

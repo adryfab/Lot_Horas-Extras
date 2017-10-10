@@ -146,12 +146,12 @@
                 <td>
                 </td>
                 <td class="w3-tiny w3-text-red">
-                    <asp:RequiredFieldValidator ID="ValIngreso" runat="server" ErrorMessage="Vacío" ControlToValidate="IngresoTxt"/>
+                    <%--<asp:RequiredFieldValidator ID="ValIngreso" runat="server" ErrorMessage="Vacío" ControlToValidate="IngresoTxt"/>--%>
                 </td>
                 <td>
                 </td>
                 <td class="w3-tiny w3-text-red">
-                    <asp:RequiredFieldValidator ID="ValSalida" runat="server" ErrorMessage="Vacío" ControlToValidate="SalidaTxt"/>
+                    <%--<asp:RequiredFieldValidator ID="ValSalida" runat="server" ErrorMessage="Vacío" ControlToValidate="SalidaTxt"/>--%>
                 </td>
                 <td>
                 </td>

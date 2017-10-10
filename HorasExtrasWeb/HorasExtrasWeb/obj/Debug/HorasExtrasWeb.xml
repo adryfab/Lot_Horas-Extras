@@ -835,24 +835,6 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
-<member name="F:HorasExtrasWeb.Registro._ValIngreso">
-<summary>
-Control ValIngreso.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:HorasExtrasWeb.Registro._ValSalida">
-<summary>
-Control ValSalida.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
 <member name="F:HorasExtrasWeb.Registro._ValJustifica">
 <summary>
 Control ValJustifica.
