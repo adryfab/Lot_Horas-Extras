@@ -40,6 +40,7 @@ BEGIN TRY
 			,HorasRecuperar
 			,Descripcion 
 			,Activo
+			,Biometrico
 		)
 		SELECT 
 			 UsuarioId		= @UsuarioId
@@ -59,6 +60,7 @@ BEGIN TRY
 			,HorasRecuperar	= M.X.value('@HORREC', 'time(0)')
 			,Descripcion	= M.X.value('@JUSTIF', 'varchar(MAX)')
 			,Activo			= M.X.value('@ACTIVO', 'bit')
+			,Biometrico		= M.X.value('@BIOMET', 'bit')
 		FROM @InfoXml.nodes('/HOREXT')	AS M(X) 	
 		
 		SELECT @HorasExtrasId = @@IDENTITY
@@ -83,6 +85,7 @@ BEGIN TRY
 			,HorasRecuperar	= M.X.value('@HORREC', 'time(0)')
 			,Descripcion	= M.X.value('@JUSTIF', 'varchar(MAX)')
 			,Activo			= M.X.value('@ACTIVO', 'bit')
+			,Biometrico		= M.X.value('@BIOMET', 'bit')
 		FROM tbHorasExtras HE 
 		INNER JOIN @InfoXml.nodes('/HOREXT') AS M(X) 
 		ON HE.HorasExtrasId = M.X.value('@HOREXT', 'bigint')

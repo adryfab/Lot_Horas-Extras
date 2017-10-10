@@ -186,11 +186,11 @@
             OnRowCancelingEdit="GridView_RowCancelingEdit" 
             OnRowDeleting="GridView_RowDeleting" 
             OnRowUpdating="GridView_RowUpdating" ShowHeaderWhenEmpty="True" 
-            onrowdatabound="GridView_RowDataBound" ShowFooter="True" 
+            onRowDatabound="GridView_RowDataBound" ShowFooter="True" 
             >
             <HeaderStyle CssClass="w3-indigo w3-center w3-small" />
             <FooterStyle CssClass="w3-gray w3-center w3-small" />
-            <AlternatingRowStyle CssClass="w3-light-grey" />
+            <%--<AlternatingRowStyle CssClass="w3-light-grey" />--%>
             <Columns>
                 <asp:TemplateField HeaderText="Codigo" Visible="False">
                     <ItemTemplate>
@@ -307,6 +307,11 @@
                 <asp:TemplateField HeaderText="Activo" Visible="False">
                     <ItemTemplate>
                         <asp:Label ID="Activo" runat="server" Text='<%#Bind("Activo") %>' />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Biometrico" Visible="False">
+                    <ItemTemplate>
+                        <asp:Label ID="Biometrico" runat="server" Text='<%#Bind("Biometrico") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

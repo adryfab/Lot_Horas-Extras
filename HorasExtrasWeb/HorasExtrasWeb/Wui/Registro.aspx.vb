@@ -103,7 +103,6 @@ Public Class Registro
         Dim cadenaXML As String = String.Empty
 
         cadenaXML &= "<HOREXT "
-        'cadenaXML &= "CODEMP=""" & lblCodigo.Text & """ "
         cadenaXML &= "CODEMP=""" & Master.codigo & """ "
         Dim fecha As Date = row.Item("Fecha")
         cadenaXML &= "FECHAM=""" & fecha.ToString("yyyy-MM-dd") & """ "
@@ -128,12 +127,11 @@ Public Class Registro
         Dim horaRecuperar As DateTime = row.Item("HorasRecuperar")
         cadenaXML &= "HORREC=""" & horaRecuperar.ToString("HH:mm") & """ "
         cadenaXML &= "JUSTIF=""" & row.Item("Justificativo").ToString & """ "
-        'cadenaXML &= "ANIOPE=""" & lblAnio.Text & """ "
         cadenaXML &= "ANIOPE=""" & Master.Año & """ "
-        'cadenaXML &= "PERIOD=""" & lblPeriodo.Text & """ "
         cadenaXML &= "PERIOD=""" & Master.Periodo & """ "
         cadenaXML &= "HOREXT=""" & row.Item("HorasExtrasId").ToString & """ "
         cadenaXML &= "ACTIVO=""" & row.Item("Activo") & """ "
+        cadenaXML &= "BIOMET=""" & row.Item("Biometrico") & """ "
         cadenaXML &= " /> "
 
         Return cadenaXML
@@ -396,10 +394,9 @@ Public Class Registro
         End If
         row("HorasRecuperar") = RecuperarTxt.Text
         row("Justificativo") = DetalleTxt.Text
-        'row("Anio") = lblAnio.Text
         row("Anio") = Master.Año
-        'row("Periodo") = lblPeriodo.Text
         row("Periodo") = Master.Periodo
+        row("Biometrico") = False
 
         CalculoHoras(row)
 
@@ -475,16 +472,22 @@ Public Class Registro
 
     Protected Sub GridView_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs)
         If e.Row.RowType = DataControlRowType.DataRow Then
+            'Desaparece botones si esta aprobado
             Dim imgEdit As ImageButton = TryCast(e.Row.Cells(1).Controls(1), ImageButton)
             Dim imgDelete As ImageButton = TryCast(e.Row.Cells(1).Controls(3), ImageButton)
-            If lblAprobado.Visible = True Then
+            If lblAprobado.Visible = True Then 'SI Aprobado
                 imgEdit.Visible = False
                 imgDelete.Visible = False
                 BtnAdd.Visible = False
-            Else
+            Else 'NO Aprobado
                 imgEdit.Visible = True
                 imgDelete.Visible = True
                 BtnAdd.Visible = True
+            End If
+            'Cambia de color la fila si no es del biometrico (ingreso manual)
+            Dim lblBio As Label = TryCast(e.Row.Cells(19).Controls(1), Label)
+            If lblBio.Text = "0" Then
+                e.Row.BackColor = System.Drawing.Color.LightBlue
             End If
         End If
     End Sub

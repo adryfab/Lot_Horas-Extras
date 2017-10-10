@@ -22,6 +22,7 @@ CREATE TABLE tbHorasExtras
 	HorasPermiso time(0) NULL,
 	HorasRecuperar time(0) NULL,
 	Descripcion varchar(MAX) NULL,
-	Activo bit DEFAULT(1) NOT NULL
+	Activo bit DEFAULT(1) NOT NULL,
+	Biometrico bit DEFAULT(1) NOT NULL
 )
 GO
