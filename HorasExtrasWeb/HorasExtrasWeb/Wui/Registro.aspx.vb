@@ -316,7 +316,6 @@ Public Class Registro
         Dim fecha As Date = dt.Rows(row.DataItemIndex)("Fecha")
 
         'La fecha no está en el rango
-        'If fecha < lblInicio.Text Or fecha > lblFin.Text Then
         If fecha < Master.Inicio Or fecha > Master.Fin Then
             Response.Write("La fecha no está dentro del rango")
             Exit Sub
@@ -400,7 +399,7 @@ Public Class Registro
         row("Periodo") = Master.Periodo
         row("Biometrico") = False
 
-        CalculoHoras(row)
+        If CalculoHoras(row) = False Then Exit Sub
 
         'Grabando el registro en la BD
         Dim HorasExtrasId As Integer = GrabarRegistros(row)
@@ -452,7 +451,9 @@ Public Class Registro
         Return resultado
     End Function
 
-    Private Sub CalculoHoras(ByRef row As DataRow)
+    Private Function CalculoHoras(ByRef row As DataRow) As Boolean
+        Dim resultado As Boolean = False
+
         Dim fecha As Date = row("Fecha")
 
         Dim horaIngreso As DateTime = row("Ingreso")
@@ -471,19 +472,46 @@ Public Class Registro
         Dim diaDeLaSemana As Integer = Weekday(fecha)
 
         'Verifica si es 50% o 100%
-        If diaDeLaSemana = 1 Or diaDeLaSemana = 7 Then 'Domingo o Sabado 100%
+        If diaDeLaSemana = 1 Or diaDeLaSemana = 7 Then 'Domingo=1 o Sabado=7 --> 100%
             row("Horas100") = TotalDiferencia
+            resultado = True
         Else 'Lunes a Viernes
-            If thorDiff.TotalMinutes > 0 Then 'más de 9 horas de trabajo 50%
-                row("Horas50") = (sobretiempo50.ToString + ":" + minutosDiferencia.ToString)
-            Else 'ingresa por la noche
-                row("Horas50") = TotalDiferencia
+            Dim SQLConexionBD As New SQLConexionBD()
+            Dim feriado As Boolean = SQLConexionBD.ValidarFeriados(fecha, Master.areaId)
+            If feriado = True Then 'SI es feriado --> 100%
+                row("Horas100") = TotalDiferencia
+                resultado = True
+            Else 'NO es feriado
+                If thorDiff.TotalMinutes > 0 Then 'más de 9 horas de trabajo 50%
+                    row("Horas50") = (sobretiempo50.ToString + ":" + minutosDiferencia.ToString)
+                    resultado = True
+                Else 'ingresa por la noche
+                    Dim fechaIngreso As DateTime = fecha.ToShortDateString + " " + horaIngreso.ToShortTimeString
+                    Dim fechaSalida As DateTime = fecha.ToShortDateString + " " + horaSalida.ToShortTimeString
+                    Dim fechaIniHEN1 As DateTime = fecha.ToShortDateString + " 17:30"
+                    Dim fechaFinHEN1 As DateTime = fecha.ToShortDateString + " 23:59"
+                    Dim fechaIniHEN2 As DateTime = fecha.ToShortDateString + " 00:00"
+                    Dim fechaFinHEN2 As DateTime = fecha.ToShortDateString + " 05:59"
+                    If fechaIngreso >= fechaIniHEN1 And fechaSalida <= fechaFinHEN1 Then 'Entre las 17:30-23:50 = 50%
+                        row("Horas50") = TotalDiferencia
+                        resultado = True
+                    Else
+                        If fechaIngreso >= fechaIniHEN2 And fechaSalida <= fechaFinHEN2 Then 'Entre las 00:00-05:50 = 100%
+                            row("Horas100") = TotalDiferencia
+                            resultado = True
+                        Else
+                            lblError.Text = "Separe las horas del 50% y 100% en dos registros diferentes"
+                            lblError.Visible = True
+                            resultado = False
+                        End If
+                    End If
+                End If
             End If
         End If
 
         row("Activo") = True
-
-    End Sub
+        Return resultado
+    End Function
 
     Protected Sub GridView_RowDataBound(ByVal sender As Object, ByVal e As GridViewRowEventArgs)
         If e.Row.RowType = DataControlRowType.DataRow Then

@@ -87,6 +87,8 @@
                 <td colspan="2" class="w3-tiny w3-center w3-border-top w3-border-right w3-border-left">
                     <asp:Label ID="Label8" runat="server" Text="Resta el 100%"/>
                 </td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="w3-small">

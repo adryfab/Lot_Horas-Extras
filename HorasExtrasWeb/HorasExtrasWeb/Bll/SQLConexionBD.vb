@@ -200,4 +200,23 @@ Public Class SQLConexionBD
         Return dtSet
     End Function
 
+    Public Function ValidarFeriados(ByVal fecha As Date, ByVal localidad As Int32) As Boolean
+        Dim validado As Boolean = False
+        Try
+            Dim SQLDataAdapter = New SqlDataAdapter("spFeriadosValidar", Conexion)
+            SQLDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure
+            SQLDataAdapter.SelectCommand.Parameters.Add(New SqlParameter("@fecha", SqlDbType.Date))
+            SQLDataAdapter.SelectCommand.Parameters("@fecha").Value = fecha
+            SQLDataAdapter.SelectCommand.Parameters.Add(New SqlParameter("@localidad", SqlDbType.Int))
+            SQLDataAdapter.SelectCommand.Parameters("@localidad").Value = localidad
+            SQLDataAdapter.SelectCommand.Parameters.Add(New SqlParameter("@feriado", SqlDbType.Bit))
+            SQLDataAdapter.SelectCommand.Parameters("@feriado").Direction = ParameterDirection.Output
+            SQLDataAdapter.SelectCommand.ExecuteNonQuery()
+            validado = SQLDataAdapter.SelectCommand.Parameters("@feriado").Value
+        Catch ex As Exception
+            validado = False
+        End Try
+        Return validado
+    End Function
+
 End Class
