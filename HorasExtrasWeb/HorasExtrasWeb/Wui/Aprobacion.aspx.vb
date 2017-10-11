@@ -42,9 +42,7 @@
             Exit Sub
         End If
         dtAprobaciones = dsTablas.Tables(0)
-        If dsTablas.Tables.Count = 1 Then
-            Exit Sub
-        End If
+
         Session("dtAprobaciones") = dtAprobaciones
         BindDataGrid()
     End Sub
