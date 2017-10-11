@@ -181,6 +181,9 @@
                 </td>
             </tr>
         </table>
+        <div runat="server" visible="false" id="divError">
+                <asp:Label ID="lblError" runat="server" Text="" Visible="false" CssClass="w3-panel w3-red"/>
+        </div>
     </div>
     <div>
         <asp:GridView ID="gvBiometrico" runat="server" AutoGenerateColumns="False"
@@ -333,8 +336,7 @@
                         CausesValidation="False" />
                 </td>
                 <td>
-                <asp:Label ID="lblError" runat="server" Text="" Visible="false" CssClass="w3-panel w3-red"/>
-                </td>
+                    &nbsp;</td>
             </tr>
         </table>
     </div>

@@ -221,6 +221,24 @@ Partial Public Class Registro
     Protected WithEvents ComFechFin As Global.System.Web.UI.WebControls.CompareValidator
     
     '''<summary>
+    '''Control divError.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents divError As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    
+    '''<summary>
+    '''Control lblError.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lblError As Global.System.Web.UI.WebControls.Label
+    
+    '''<summary>
     '''Control gvBiometrico.
     '''</summary>
     '''<remarks>
@@ -255,15 +273,6 @@ Partial Public Class Registro
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents btnPrint As Global.System.Web.UI.WebControls.ImageButton
-    
-    '''<summary>
-    '''Control lblError.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents lblError As Global.System.Web.UI.WebControls.Label
     
     '''<summary>
     '''Propiedad Master.

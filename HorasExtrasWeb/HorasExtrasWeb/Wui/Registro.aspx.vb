@@ -154,6 +154,7 @@ Public Class Registro
                     result = False 'Se encuentra dentro del rango
                     lblError.Text = "Fecha y hora ya se encuentran en el grid"
                     lblError.Visible = True
+                    divError.Visible = True
                     Exit For
                 Else
                     result = True 'Está fuera del rango
@@ -359,6 +360,7 @@ Public Class Registro
         BtnAdd.Enabled = True
         lblError.Text = Nothing
         lblError.Visible = False
+        divError.Visible = False
     End Sub
 
     Protected Sub btnAgregar_Click(sender As Object, e As ImageClickEventArgs) Handles btnAgregar.Click
@@ -434,6 +436,7 @@ Public Class Registro
             If ingreso > salida Then
                 lblError.Text = "La hora de ingreso debe ser mayor que la hora de salida"
                 lblError.Visible = True
+                divError.Visible = True
                 Return False
             End If
 
@@ -444,6 +447,7 @@ Public Class Registro
             Else
                 lblError.Text = "Debe ingresar alguna hora"
                 lblError.Visible = True
+                divError.Visible = True
                 resultado = False
             End If
         End If
@@ -502,6 +506,7 @@ Public Class Registro
                         Else
                             lblError.Text = "Separe las horas del 50% y 100% en dos registros diferentes"
                             lblError.Visible = True
+                            divError.Visible = True
                             resultado = False
                         End If
                     End If

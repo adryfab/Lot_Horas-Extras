@@ -871,6 +871,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:HorasExtrasWeb.Registro._divError">
+<summary>
+Control divError.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Registro._lblError">
+<summary>
+Control lblError.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:HorasExtrasWeb.Registro._gvBiometrico">
 <summary>
 Control gvBiometrico.
@@ -901,15 +919,6 @@ Para modificarlo, mueva la declaración del campo del archivo del diseñador al 
 <member name="F:HorasExtrasWeb.Registro._btnPrint">
 <summary>
 Control btnPrint.
-</summary>
-<remarks>
-Campo generado automáticamente.
-Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-</remarks>
-</member>
-<member name="F:HorasExtrasWeb.Registro._lblError">
-<summary>
-Control lblError.
 </summary>
 <remarks>
 Campo generado automáticamente.
