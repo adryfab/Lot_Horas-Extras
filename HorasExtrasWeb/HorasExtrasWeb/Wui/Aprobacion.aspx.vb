@@ -38,6 +38,9 @@
         DatosEmpleado(dtEmpleado)
 
         dsTablas = SQLConexionBD.RecuperarAprobaciones(user)
+        If dsTablas Is Nothing Or dsTablas.Tables.Count = 0 Then
+            Exit Sub
+        End If
         dtAprobaciones = dsTablas.Tables(0)
         If dsTablas.Tables.Count = 1 Then
             Exit Sub

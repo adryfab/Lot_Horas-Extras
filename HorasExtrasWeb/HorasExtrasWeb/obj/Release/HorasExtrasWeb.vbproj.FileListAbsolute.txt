@@ -8,3 +8,13 @@ C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\HorasExtrasWeb\Horas
 C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\HorasExtrasWeb\HorasExtrasWeb\obj\Release\HorasExtrasWeb.dll
 C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\HorasExtrasWeb\HorasExtrasWeb\obj\Release\HorasExtrasWeb.xml
 C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\HorasExtrasWeb\HorasExtrasWeb\obj\Release\HorasExtrasWeb.pdb
+C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\HorasExtrasWeb\HorasExtrasWeb\bin\HorasExtrasWeb.dll.config
+C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\HorasExtrasWeb\HorasExtrasWeb\bin\HorasExtrasWeb.dll
+C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\HorasExtrasWeb\HorasExtrasWeb\bin\HorasExtrasWeb.pdb
+C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\HorasExtrasWeb\HorasExtrasWeb\bin\HorasExtrasWeb.xml
+C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\HorasExtrasWeb\HorasExtrasWeb\obj\Release\HorasExtrasWeb.vbprojResolveAssemblyReference.cache
+C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\HorasExtrasWeb\HorasExtrasWeb\obj\Release\HorasExtrasWeb.Resources.resources
+C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\HorasExtrasWeb\HorasExtrasWeb\obj\Release\HorasExtrasWeb.vbproj.GenerateResource.Cache
+C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\HorasExtrasWeb\HorasExtrasWeb\obj\Release\HorasExtrasWeb.dll
+C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\HorasExtrasWeb\HorasExtrasWeb\obj\Release\HorasExtrasWeb.xml
+C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\HorasExtrasWeb\HorasExtrasWeb\obj\Release\HorasExtrasWeb.pdb

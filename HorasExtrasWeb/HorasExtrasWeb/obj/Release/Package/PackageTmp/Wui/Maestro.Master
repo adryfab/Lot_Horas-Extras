@@ -18,52 +18,75 @@
         </header>
         <div class="w3-container">                        
             <div class="w3-bar w3-light-grey w3-border">
-                <a href="Registro.aspx" class="w3-bar-item w3-button w3-border w3-hover-indigo">Registro</a>
+                <a href="Registro.aspx" class="w3-bar-item w3-button w3-border w3-hover-indigo">Registrar</a>
                 <a href="Aprobacion.aspx" class="w3-bar-item w3-button w3-border w3-hover-indigo">Aprobar</a>
+                <a href="Procesar.aspx" class="w3-bar-item w3-button w3-border w3-hover-indigo" id="idProcesar" 
+                    runat="server" visible="false">Procesar</a>
                 <a href="Login.aspx" class="w3-bar-item w3-button w3-border w3-hover-indigo w3-right">Ingresar</a>
-            </div>
-<%--            <div>
-                <table>
-                    <tr>
-                        <td>
-                            <asp:Label ID="lblTxtUsuario" runat="server" Text="Usuario: " Visible="False" />
-                        </td>
-                        <td class="w3-tag w3-pale-blue">
-                            <asp:Label ID="lblUsuario" runat="server" Text="Label" Visible="False" />
-                        </td>
-                        <td>
-                            <asp:Label ID="lblTxtCodigo" runat="server" Text="Codigo: " Visible="False" />
-                        </td>
-                        <td class="w3-tag w3-pale-blue">
-                            <asp:Label ID="lblCodigo" runat="server" Text="Label" Visible="False" />
-                        </td>
-                        <td>
-                            <asp:Label ID="lblTxtAnio" runat="server" Text="Año: " Visible="False" />
-                        </td>
-                        <td class="w3-tag w3-pale-blue">
-                            <asp:Label ID="lblAnio" runat="server" Text="Label" Visible="False" />
-                        </td>
-                        <td>
-                            <asp:Label ID="lblTxtPeriodo" runat="server" Text="Periodo: " Visible="False" />
-                        </td>
-                        <td class="w3-tag w3-pale-blue">
-                            <asp:Label ID="lblPeriodo" runat="server" Text="Label" Visible="False"/>
-                        </td>
-                        <td>
-                            <asp:Label ID="lblTxtInicio" runat="server" Text="Desde: " Visible="False" />
-                        </td>
-                        <td class="w3-tag w3-pale-blue">
-                            <asp:Label ID="lblInicio" runat="server" Text="Label" Visible="False"/>
-                        </td>
-                        <td>
-                            <asp:Label ID="lblTxtFin" runat="server" Text="Hasta: " Visible="False"/>
-                        </td>
-                        <td class="w3-tag w3-pale-blue">
-                            <asp:Label ID="lblFin" runat="server" Text="Label" Visible="False"/>
-                        </td>
-                    </tr>
-                </table>
-            </div>--%>
+            </div>            
+        </div>
+        <div>
+            <table>
+                <tr class="w3-tiny">
+                    <td>
+                        <asp:Label ID="lblTxtUsuario" runat="server" Text="Usuario: " />
+                    </td>
+                    <td class="w3-tag w3-pale-blue">
+                        <asp:Label ID="lblUsuario" runat="server" Text="" />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblTxtCodigo" runat="server" Text="Codigo: " />
+                    </td>
+                    <td class="w3-tag w3-pale-blue">
+                        <asp:Label ID="lblCodigo" runat="server" Text="" />
+                    </td>                
+                    <td>
+                        <asp:Label ID="Label9" runat="server" Text="Area:"/>
+                    </td>
+                    <td class="w3-tag w3-pale-blue">
+                        <asp:Label ID="lblArea" runat="server" Text="" />
+                        <asp:Label ID="lblAreaId" runat="server" Text="lblAreaId" Visible="false"/>
+                    </td>
+                    <td>
+                        <asp:Label ID="Label10" runat="server" Text="Departamento"/>
+                    </td>
+                    <td class="w3-tag w3-pale-blue">
+                        <asp:Label ID="lblDep" runat="server" Text="" />
+                        <asp:Label ID="lblDepId" runat="server" Text="lblDepId" Visible="false"/>
+                    </td>
+                    <td>
+                        <asp:Label ID="lblTxtCargo" runat="server" Text="Cargo: "/>
+                    </td>
+                    <td class="w3-tag w3-pale-blue">
+                        <asp:Label ID="lblCargo" runat="server" Text=""/>
+                        <asp:Label ID="lblCargoId" runat="server" Text="lblCargoId" Visible="false"/>
+                    </td>
+                    <td>
+                        <asp:Label ID="lblTxtAnio" runat="server" Text="Año: " />
+                    </td>
+                    <td class="w3-tag w3-pale-blue">
+                        <asp:Label ID="lblAnio" runat="server" Text="" />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblTxtPeriodo" runat="server" Text="Periodo: " />
+                    </td>
+                    <td class="w3-tag w3-pale-blue">
+                        <asp:Label ID="lblPeriodo" runat="server" Text="" />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblTxtInicio" runat="server" Text="Desde: " />
+                    </td>
+                    <td class="w3-tag w3-pale-blue">
+                        <asp:Label ID="lblInicio" runat="server" Text="" />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblTxtFin" runat="server" Text="Hasta: " />
+                    </td>
+                    <td class="w3-tag w3-pale-blue">
+                        <asp:Label ID="lblFin" runat="server" Text="" />
+                    </td>
+                </tr>
+            </table>
         </div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">        
         </asp:ContentPlaceHolder>

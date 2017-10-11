@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Wui/Maestro.Master" CodeBehind="Aprobacion.aspx.vb" Inherits="HorasExtrasWeb.Aprobacion" %>
+<%@ MasterType virtualpath="~/Wui/Maestro.Master" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script type = "text/javascript">
@@ -19,48 +20,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="w3-container w3-center w3-panel w3-blue">
         <h2 class="w3-opacity" style="text-shadow:2px 2px 0 #444">Aprobaciones</h2>
-    </div>
-    <div>
-        <table>
-            <tr>
-                <td>
-                    <asp:Label ID="lblTxtUsuario" runat="server" Text="Usuario: " Visible="False" />
-                </td>
-                <td class="w3-tag w3-pale-blue">
-                    <asp:Label ID="lblUsuario" runat="server" Text="Label" Visible="False" />
-                </td>
-                <td>
-                    <asp:Label ID="lblTxtCodigo" runat="server" Text="Codigo: " Visible="False" />
-                </td>
-                <td class="w3-tag w3-pale-blue">
-                    <asp:Label ID="lblCodigo" runat="server" Text="Label" Visible="False" />
-                </td>
-                <td>
-                    <asp:Label ID="lblTxtAnio" runat="server" Text="Año: " Visible="False" />
-                </td>
-                <td class="w3-tag w3-pale-blue">
-                    <asp:Label ID="lblAnio" runat="server" Text="Label" Visible="False" />
-                </td>
-                <td>
-                    <asp:Label ID="lblTxtPeriodo" runat="server" Text="Periodo: " Visible="False" />
-                </td>
-                <td class="w3-tag w3-pale-blue">
-                    <asp:Label ID="lblPeriodo" runat="server" Text="Label" Visible="False"/>
-                </td>
-                <td>
-                    <asp:Label ID="lblTxtInicio" runat="server" Text="Desde: " Visible="False" />
-                </td>
-                <td class="w3-tag w3-pale-blue">
-                    <asp:Label ID="lblInicio" runat="server" Text="Label" Visible="False"/>
-                </td>
-                <td>
-                    <asp:Label ID="lblTxtFin" runat="server" Text="Hasta: " Visible="False"/>
-                </td>
-                <td class="w3-tag w3-pale-blue">
-                    <asp:Label ID="lblFin" runat="server" Text="Label" Visible="False"/>
-                </td>
-            </tr>
-        </table>
     </div>
     <div id="id01" class="w3-modal" runat="server" visible="false">
         <div class="w3-modal-content">

@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="ImprimirRegistro.aspx.vb" Inherits="HorasExtrasWeb.ImprimirRegistro" %>
-<%--<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="ImprimirRegistro.aspx.vb" Inherits="Revision.ImprimirRegistro" %>--%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -81,7 +80,7 @@
             </b>
         </div>
         <div>
-            <asp:GridView ID="gvBiometrico50" runat="server" AutoGenerateColumns="False" ShowFooter="true">
+            <asp:GridView ID="gvBiometrico50" runat="server" AutoGenerateColumns="False" ShowFooter="True">
                 <HeaderStyle CssClass="w3-gray w3-tiny"/>
                 <FooterStyle CssClass="w3-gray w3-center w3-tiny" />
                 <Columns>
@@ -113,6 +112,12 @@
                         </ItemTemplate>
                         <ItemStyle HorizontalAlign="Center" />
                     </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Permiso" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <asp:Label ID="Permiso" runat="server" Text='<%#Bind("HorasPermiso", "{0: H:mm}") %>' />
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center" />
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="Horas a pagar" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Label ID="Horas50" runat="server" Text='<%#Bind("Horas50", "{0: H:mm}") %>' />
@@ -137,7 +142,7 @@
             </b>
         </div>
         <div>
-            <asp:GridView ID="gvBiometrico100" runat="server" AutoGenerateColumns="False" ShowFooter="true">
+            <asp:GridView ID="gvBiometrico100" runat="server" AutoGenerateColumns="False" ShowFooter="True">
                 <HeaderStyle CssClass="w3-gray w3-tiny" />
                 <FooterStyle CssClass="w3-gray w3-center w3-tiny" />
                 <Columns>
@@ -166,6 +171,12 @@
                     <asp:TemplateField HeaderText="Total horas trabajadas" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:Label ID="HoraLab" runat="server" Text='<%#Bind("Laborado", "{0: H:mm}") %>' />
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center" />
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Recuperar" ItemStyle-HorizontalAlign="Center">
+                        <ItemTemplate>
+                            <asp:Label ID="Recuperar" runat="server" Text='<%#Bind("HorasRecuperar", "{0: H:mm}") %>' />
                         </ItemTemplate>
                         <ItemStyle HorizontalAlign="Center" />
                     </asp:TemplateField>

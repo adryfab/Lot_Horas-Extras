@@ -7,7 +7,7 @@ DECLARE
 --AS
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 SELECT
-	@UsuarioId = '012042'--'cguznay' --'010350' 
+	@UsuarioId = '009275'--glavayen --'012042'--'cguznay' --'010350' 
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 BEGIN
 	--Obtiene el codigo del empleado
@@ -77,13 +77,13 @@ BEGIN
 		ORDER	BY NOM.NOMINA_ID
 	END
 
-	--DATOS DEL EMPLEADO
-	SELECT	  @UsuarioId AS 'CodigoEmp'
-			, PER.anio AS 'Anio'
-			, PER.periodo AS 'Periodo'
-			, PER.FechaInicial AS 'FechaInicial'
-			, PER.FechaFinal AS 'FechaFinal'
-	FROM	#tbPeriodo	AS PER 
+	----DATOS DEL EMPLEADO
+	--SELECT	  @UsuarioId AS 'CodigoEmp'
+	--		, PER.anio AS 'Anio'
+	--		, PER.periodo AS 'Periodo'
+	--		, PER.FechaInicial AS 'FechaInicial'
+	--		, PER.FechaFinal AS 'FechaFinal'
+	--FROM	#tbPeriodo	AS PER 
 
 	DROP TABLE #tbPeriodo 
 END
