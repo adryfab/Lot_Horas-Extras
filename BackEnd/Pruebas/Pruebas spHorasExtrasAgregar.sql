@@ -15,30 +15,30 @@ BEGIN TRY
 	SELECT @HorasExtrasId = ISNULL(M.X.value('@HOREXT', 'bigint'),0) FROM @InfoXml.nodes('/HOREXT') AS M(X)
 
 	BEGIN TRAN
-	/*
+	
 	IF @HorasExtrasId = 0 --No existe
 	BEGIN
 		--Se realiza la inserción de los datos a partir del XML.	
-		INSERT INTO	tbHorasExtras
-		(
-			 UsuarioId 
-			,CodigoEmp 
-			,Anio 
-			,PeriodoId 
-			,Fecha 
-			,HoraIngreso 
-			,HoraSalida 
-			,HoraLaborado 
-			,HoraAtrasado 
-			,HoraAnticipado 
-			,Horas0 
-			,Horas50 
-			,Horas100 
-			,HorasPermiso
-			,HorasRecuperar
-			,Descripcion 
-			,Activo
-		)
+		-- INSERT INTO	tbHorasExtras
+		-- (
+			 -- UsuarioId 
+			-- ,CodigoEmp 
+			-- ,Anio 
+			-- ,PeriodoId 
+			-- ,Fecha 
+			-- ,HoraIngreso 
+			-- ,HoraSalida 
+			-- ,HoraLaborado 
+			-- ,HoraAtrasado 
+			-- ,HoraAnticipado 
+			-- ,Horas0 
+			-- ,Horas50 
+			-- ,Horas100 
+			-- ,HorasPermiso
+			-- ,HorasRecuperar
+			-- ,Descripcion 
+			-- ,Activo
+		-- )
 		SELECT 
 			 UsuarioId		= @UsuarioId
 			,CodigoEmp		= M.X.value('@CODEMP', 'int')
@@ -85,7 +85,7 @@ BEGIN TRY
 		INNER JOIN @InfoXml.nodes('/HOREXT') AS M(X) 
 		ON HE.HorasExtrasId = M.X.value('@HOREXT', 'bigint')
 	END
-	*/
+	
 	---*** CABECERA PARA APROBACIONES ***---
 	DECLARE  @horas50 as smallint
 			,@minutos50 as smallint
@@ -121,8 +121,11 @@ BEGIN TRY
 			    @totalHoras50 = horas_h50-horas_per 
 			  , @totalMinutos50 = minutos_h50-minutos_per 
 		from (
-			SELECT ((SUM(DATEPART(HOUR, horas50 )) )+(SUM(DATEPART(MINUTE, horas50 )) )/60) as horas_h50,(SUM(DATEPART(MINUTE, horas50 )) )%60 as minutos_h50, 
-			((SUM(DATEPART(HOUR, HorasPermiso )) )+(SUM(DATEPART(MINUTE, HorasPermiso )) )/60) as horas_per,(SUM(DATEPART(MINUTE, HorasPermiso )) )%60 as minutos_per
+			SELECT 
+			((SUM(DATEPART(HOUR,horas50)))+(SUM(DATEPART(MINUTE,horas50)))/60) as horas_h50,
+			((SUM(DATEPART(MINUTE,horas50)))%60) as minutos_h50, 
+			((SUM(DATEPART(HOUR,HorasPermiso)))+(SUM(DATEPART(MINUTE,HorasPermiso)))/60) as horas_per,
+			((SUM(DATEPART(MINUTE,HorasPermiso)))%60) as minutos_per
 			FROM tbHorasExtras HE
 			INNER JOIN @InfoXml.nodes('/HOREXT') AS M(X) 
 			ON HE.CodigoEmp = M.X.value('@CODEMP', 'int')
