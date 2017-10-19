@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="Maestro.Master" CodeBehind="Registro.aspx.vb" Inherits="HorasExtrasWeb.Registro" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 <%@ Import Namespace="System.Security.Principal" %>
 <%@ MasterType virtualpath="~/Wui/Maestro.Master" %>
 <%@ OutputCache Location="None" NoStore="true" %>
@@ -86,6 +88,8 @@
                 </td>
                 <td>
                     <asp:TextBox ID="FechaTxt" runat="server" Width="100px"/>
+                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                    <ajaxToolkit:MaskedEditExtender ID="MaskedEditExtender1" runat="server" Mask="99/99/9999" MaskType="Date" TargetControlID="FechaTxt" />
                 </td>
                 <td class="w3-small">
                     <asp:Label ID="Label2" runat="server" Text="Ingreso:"/>
