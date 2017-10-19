@@ -41,6 +41,24 @@ Partial Public Class Maestro
     Protected WithEvents idProcesar As Global.System.Web.UI.HtmlControls.HtmlAnchor
     
     '''<summary>
+    '''Control idInicio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents idInicio As Global.System.Web.UI.HtmlControls.HtmlAnchor
+    
+    '''<summary>
+    '''Control idFin.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents idFin As Global.System.Web.UI.HtmlControls.HtmlAnchor
+    
+    '''<summary>
     '''Control lblTxtUsuario.
     '''</summary>
     '''<remarks>

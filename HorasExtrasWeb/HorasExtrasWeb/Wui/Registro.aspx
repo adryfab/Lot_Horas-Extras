@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="Maestro.Master" CodeBehind="Registro.aspx.vb" Inherits="HorasExtrasWeb.Registro" %>
 <%@ Import Namespace="System.Security.Principal" %>
 <%@ MasterType virtualpath="~/Wui/Maestro.Master" %>
+<%@ OutputCache Location="None" NoStore="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script type="text/javascript"> 
@@ -54,17 +55,6 @@
         <h2 class="w3-opacity" style="text-shadow:2px 2px 0 #444">Registro de Horas Extras</h2>
     </div>
     <div>
-        <%--<table>
-            <tr class="w3-small">
-                <td>
-                    <asp:Label ID="lblAprobado" runat="server" Text="Aprobado" Visible="false" class="w3-red"/>
-                </td>
-                <td>
-                    <asp:ImageButton ID="btnPrint" runat="server" CommandName="Imprimir" ImageUrl="../icons/impresora.ico" ToolTipText="Imprimir" 
-                        CausesValidation="False" />
-                </td>
-            </tr>
-        </table>--%>
     </div>
     <div id="NewReg2" runat="server" visible="false">
         <table>

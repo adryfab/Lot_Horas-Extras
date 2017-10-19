@@ -181,6 +181,7 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\PublishProfiles\CustomProfile.pubxml" />
     <None Include="My Project\PublishProfiles\FolderProfile.pubxml" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -222,7 +223,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>30386</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/HorasExtras</IISUrl>
+          <IISUrl>http://localhost:8010/HorasExtras</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

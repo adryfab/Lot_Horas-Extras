@@ -73,6 +73,7 @@ Public Class Registro
 
         Dim adAuth As LdapAuthentication = New LdapAuthentication("")
         Master.procesar = adAuth.MenuProcesar(Master.areaId, Master.DepId, Master.CargoId)
+        Master.sesionIni = True
 
         CompFechaIni.ValueToCompare = Master.Inicio
         ComFechFin.ValueToCompare = Master.Fin

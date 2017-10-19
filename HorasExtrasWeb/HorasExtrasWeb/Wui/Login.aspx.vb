@@ -3,42 +3,25 @@ Public Class Login
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
+        FormsAuthentication.SignOut()
+        Session.Clear()
+        Session.Abandon()
+        Session.RemoveAll()
+        Master.sesionIni = False
     End Sub
 
     Protected Sub Login_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        'Dim adPath As String = ""
-        'Dim sesion As String = ""
-        'Dim EmpId As String = ""
-        'Dim rootWebConfig1 As System.Configuration.Configuration
-        'rootWebConfig1 = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration("/HorasExtrasWeb")
-        'If (0 < rootWebConfig1.AppSettings.Settings.Count) Then
-        '    Dim customSetting, sessionSetting, EmpIdSetting As System.Configuration.KeyValueConfigurationElement
-        '    customSetting = rootWebConfig1.AppSettings.Settings("LdapPath")
-        '    sessionSetting = rootWebConfig1.AppSettings.Settings("Sesion")
-        '    EmpIdSetting = rootWebConfig1.AppSettings.Settings("EmpId")
-        '    If Not (Nothing = customSetting.Value) Then
-        '        adPath = customSetting.Value
-        '        sesion = sessionSetting.Value
-        '        EmpId = EmpIdSetting.Value
-        '    Else
-        '        errorLabel.Text = "No LdapPath application string"
-        '        Exit Sub
-        '    End If
-        'End If
-        'Dim adAuth As LdapAuthentication = New LdapAuthentication(adPath)
         Dim adAuth As LdapAuthentication = New LdapAuthentication("LDAP://")
         Try
-            'If (True = adAuth.IsAuthenticated(txtDomain.Text, txtUsername.Text, txtPassword.Text, sesion, EmpId)) Then
             Dim resultado As Boolean = adAuth.ValidarCredenciales(txtUsername.Text, txtPassword.Text, txtDomain.Text)
 
             If resultado = True Then
-                Dim groups As String = txtDomain.Text 'adAuth.GetGroups()
+                Dim groups As String = txtDomain.Text
 
                 'Create the ticket, and add the groups.
-                Dim isCookiePersistent As Boolean = False 'chkPersist.Checked
+                Dim isCookiePersistent As Boolean = False
                 Dim authTicket As FormsAuthenticationTicket = New FormsAuthenticationTicket(1,
-                     txtUsername.Text, DateTime.Now, DateTime.Now.AddMinutes(60), isCookiePersistent, groups)
+                     txtUsername.Text, DateTime.Now, DateTime.Now.AddMinutes(1), isCookiePersistent, groups)
 
                 'Encrypt the ticket.
                 Dim encryptedTicket As String = FormsAuthentication.Encrypt(authTicket)
@@ -58,14 +41,8 @@ Public Class Login
                 Response.Cookies("Usuario")("NomEmp") = adAuth._NomEmp
                 Response.Cookies("Usuario").Expires = DateTime.Now.AddHours(1)
 
-                'If CargarDatosBasicos() = False Then
-                '    errorLabel.Text = "Problemas al cargar los datos. Revise LinkedServer"
-                '    Exit Sub
-                'End If
-
                 'You can redirect now.
                 Response.Redirect("~/Wui/Registro.aspx")
-
             Else
                 errorLabel.Text = "La autenticación no tuvo éxito. Compruebe el nombre de usuario y la contraseña."
             End If

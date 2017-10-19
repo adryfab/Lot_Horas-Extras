@@ -7,7 +7,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_NewBackgroundProfile>False</_NewBackgroundProfile>
-    <_PublishTargetUrl>C:\inetpub\wwwroot\HorasExtras</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\HorasExtrasWeb\Publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/HorasExtrasWeb.dll">
@@ -52,11 +52,14 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="icons/regresar.ico">
       <publishTime>08/02/2017 09:27:59</publishTime>
     </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>10/17/2017 16:57:44</publishTime>
+    </File>
     <File Include="script/jquery-1.5.2.min.js">
       <publishTime>04/17/2011 22:21:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/11/2017 11:40:52</publishTime>
+      <publishTime>10/18/2017 09:01:04</publishTime>
     </File>
     <File Include="Wui/Aprobacion.aspx">
       <publishTime>10/03/2017 12:26:16</publishTime>

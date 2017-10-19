@@ -63,6 +63,7 @@
 
         Dim adAuth As LdapAuthentication = New LdapAuthentication("")
         Master.procesar = adAuth.MenuProcesar(Master.areaId, Master.DepId, Master.CargoId)
+        Master.sesionIni = True
     End Sub
 
     Private Sub BindDataGrid()

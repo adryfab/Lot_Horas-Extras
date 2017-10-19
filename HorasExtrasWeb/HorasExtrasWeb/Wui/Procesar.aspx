@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Wui/Maestro.Master" CodeBehind="Procesar.aspx.vb" Inherits="HorasExtrasWeb.Procesar" %>
 <%@ MasterType virtualpath="~/Wui/Maestro.Master" %>
+<%@ OutputCache Location="None" NoStore="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

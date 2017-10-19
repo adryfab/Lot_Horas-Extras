@@ -64,6 +64,15 @@
         End Set
     End Property
 
+    Public Property sesionIni() As Boolean
+        Get
+            Return CType(ViewState("sesionIni"), Boolean)
+        End Get
+        Set(ByVal Value As Boolean)
+            ViewState("sesionIni") = Value
+        End Set
+    End Property
+
     Public Property Año() As String
         Get
             Return CType(ViewState("Año"), String)
@@ -132,6 +141,8 @@
         lblFin.Text = Me.Fin
         lblCargo.Text = Me.Cargo
         lblCargoId.Text = Me.CargoId
+        idInicio.Visible = Not Me.sesionIni
+        idFin.Visible = Me.sesionIni
     End Sub
 
 End Class
