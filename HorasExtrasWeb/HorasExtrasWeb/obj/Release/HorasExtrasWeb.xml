@@ -404,6 +404,24 @@ Campo generado automáticamente.
 Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 </remarks>
 </member>
+<member name="F:HorasExtrasWeb.Maestro._idInicio">
+<summary>
+Control idInicio.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
+<member name="F:HorasExtrasWeb.Maestro._idFin">
+<summary>
+Control idFin.
+</summary>
+<remarks>
+Campo generado automáticamente.
+Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+</remarks>
+</member>
 <member name="F:HorasExtrasWeb.Maestro._lblTxtUsuario">
 <summary>
 Control lblTxtUsuario.

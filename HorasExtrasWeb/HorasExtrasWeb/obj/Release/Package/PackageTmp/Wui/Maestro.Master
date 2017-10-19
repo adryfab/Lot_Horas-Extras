@@ -22,7 +22,10 @@
                 <a href="Aprobacion.aspx" class="w3-bar-item w3-button w3-border w3-hover-indigo">Aprobar</a>
                 <a href="Procesar.aspx" class="w3-bar-item w3-button w3-border w3-hover-indigo" id="idProcesar" 
                     runat="server" visible="false">Procesar</a>
-                <a href="Login.aspx" class="w3-bar-item w3-button w3-border w3-hover-indigo w3-right">Ingresar</a>
+                <a href="Login.aspx" class="w3-bar-item w3-button w3-border w3-hover-indigo w3-right" id="idInicio"
+                    runat="server" visible="true">Iniciar Sesión</a>
+                <a href="Login.aspx" class="w3-bar-item w3-button w3-border w3-hover-indigo w3-right" id="idFin"
+                    runat="server" visible="false">Finalizar Sesión</a>
             </div>            
         </div>
         <div>

@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Wui/Maestro.Master" CodeBehind="Aprobacion.aspx.vb" Inherits="HorasExtrasWeb.Aprobacion" %>
 <%@ MasterType virtualpath="~/Wui/Maestro.Master" %>
+<%@ OutputCache Location="None" NoStore="true" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script type = "text/javascript">

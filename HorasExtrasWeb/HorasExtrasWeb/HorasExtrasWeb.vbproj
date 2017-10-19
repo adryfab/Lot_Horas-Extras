@@ -94,6 +94,7 @@
     <Content Include="icons\plus.gif" />
     <Content Include="icons\rechazar.ico" />
     <Content Include="icons\regresar.ico" />
+    <Content Include="images\1844A.png" />
     <Content Include="script\jquery-1.5.2.min.js" />
     <Content Include="Wui\Aprobacion.aspx" />
     <Content Include="Wui\ImprimirRegistro.aspx" />

@@ -10,6 +10,13 @@
     <title>Registro de Horas Extras</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style>
+        body  {
+            background-image: url("../images/1844A.png");
+            background-attachment: fixed;
+            background-position: center; 
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
