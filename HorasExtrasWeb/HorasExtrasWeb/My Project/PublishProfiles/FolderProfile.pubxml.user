@@ -10,14 +10,17 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <_PublishTargetUrl>C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\HorasExtrasWeb\Publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>10/19/2017 16:36:45</publishTime>
+    </File>
     <File Include="bin/HorasExtrasWeb.dll">
-      <publishTime>10/19/2017 10:30:00</publishTime>
+      <publishTime>10/20/2017 09:14:14</publishTime>
     </File>
     <File Include="bin/HorasExtrasWeb.pdb">
-      <publishTime>10/19/2017 10:30:00</publishTime>
+      <publishTime>10/20/2017 09:14:14</publishTime>
     </File>
     <File Include="bin/HorasExtrasWeb.xml">
-      <publishTime>10/19/2017 10:30:00</publishTime>
+      <publishTime>10/20/2017 09:14:14</publishTime>
     </File>
     <File Include="icons/aceptar.ico">
       <publishTime>12/12/2016 11:21:18</publishTime>
@@ -52,6 +55,9 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="icons/regresar.ico">
       <publishTime>08/02/2017 09:27:59</publishTime>
     </File>
+    <File Include="images/1844A.png">
+      <publishTime>10/19/2017 16:19:25</publishTime>
+    </File>
     <File Include="PrecompiledApp.config">
       <publishTime>10/17/2017 16:57:44</publishTime>
     </File>
@@ -59,7 +65,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>04/17/2011 22:21:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/19/2017 10:30:00</publishTime>
+      <publishTime>10/20/2017 09:14:14</publishTime>
     </File>
     <File Include="Wui/Aprobacion.aspx">
       <publishTime>10/19/2017 10:26:24</publishTime>
@@ -68,16 +74,16 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>10/03/2017 12:33:44</publishTime>
     </File>
     <File Include="Wui/Login.aspx">
-      <publishTime>10/19/2017 10:28:47</publishTime>
+      <publishTime>10/19/2017 16:23:10</publishTime>
     </File>
     <File Include="Wui/Maestro.Master">
-      <publishTime>10/19/2017 10:28:09</publishTime>
+      <publishTime>10/19/2017 16:26:48</publishTime>
     </File>
     <File Include="Wui/Procesar.aspx">
       <publishTime>10/19/2017 10:26:55</publishTime>
     </File>
     <File Include="Wui/Registro.aspx">
-      <publishTime>10/19/2017 10:24:50</publishTime>
+      <publishTime>10/20/2017 09:02:22</publishTime>
     </File>
   </ItemGroup>
 </Project>
