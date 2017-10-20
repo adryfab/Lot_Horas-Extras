@@ -302,40 +302,59 @@ Public Class Registro
     End Sub
 
     Protected Sub GridView_RowUpdating(ByVal sender As Object, ByVal e As GridViewUpdateEventArgs)
-        Dim dt As DataTable = CType(Session("dtBiometrico"), DataTable)
-        Dim row As GridViewRow = gvBiometrico.Rows(e.RowIndex)
-        Dim drow As DataRow = dt.Rows(row.DataItemIndex)
+        Try
+            Dim dt As DataTable = CType(Session("dtBiometrico"), DataTable)
+            Dim row As GridViewRow = gvBiometrico.Rows(e.RowIndex)
+            Dim drow As DataRow = dt.Rows(row.DataItemIndex)
 
-        Dim horaIngreso As DateTime = Convert.ToDateTime((CType(row.FindControl("HoraIng"), Label)).Text)
-        drow("Ingreso") = horaIngreso.ToShortTimeString
-        Dim horaSalida As DateTime = Convert.ToDateTime((CType(row.FindControl("HoraSal"), Label)).Text)
-        drow("Salida") = horaSalida.ToShortTimeString
+            If ValidarJustificacionGrid(row) = False Then Exit Sub
 
-        Dim Dia As String = (CType(row.FindControl("Dia"), Label)).Text
+            Dim horaIngreso As DateTime = Convert.ToDateTime((CType(row.FindControl("HoraIng"), Label)).Text)
+            drow("Ingreso") = horaIngreso.ToShortTimeString
+            Dim horaSalida As DateTime = Convert.ToDateTime((CType(row.FindControl("HoraSal"), Label)).Text)
+            drow("Salida") = horaSalida.ToShortTimeString
 
-        drow("Justificativo") = (CType(row.FindControl("Justificativo"), TextBox)).Text
+            Dim Dia As String = (CType(row.FindControl("Dia"), Label)).Text
 
-        Dim fecha As Date = dt.Rows(row.DataItemIndex)("Fecha")
+            drow("Justificativo") = (CType(row.FindControl("Justificativo"), TextBox)).Text
 
-        'La fecha no está en el rango
-        If fecha < Master.Inicio Or fecha > Master.Fin Then
-            Response.Write("La fecha no está dentro del rango")
-            Exit Sub
-        End If
+            Dim fecha As Date = dt.Rows(row.DataItemIndex)("Fecha")
 
-        CalculoHoras(drow)
+            'La fecha no está en el rango
+            If fecha < Master.Inicio Or fecha > Master.Fin Then
+                Response.Write("La fecha no está dentro del rango")
+                Exit Sub
+            End If
 
-        'Grabando el registro en la BD
-        Dim HorasExtrasId As Integer = GrabarRegistros(drow)
-        drow("HorasExtrasId") = HorasExtrasId
+            CalculoHoras(drow)
 
-        'Reset the edit index.
-        gvBiometrico.EditIndex = -1
+            'Grabando el registro en la BD
+            Dim HorasExtrasId As Integer = GrabarRegistros(drow)
+            drow("HorasExtrasId") = HorasExtrasId
 
-        'Bind data to the GridView control.
-        BindDataGrid()
-        Llenar_Grid()
+            'Reset the edit index.
+            gvBiometrico.EditIndex = -1
+
+            'Bind data to the GridView control.
+            BindDataGrid()
+            Llenar_Grid()
+        Catch ex As Exception
+            lblError.Text = ex.Message
+        End Try
     End Sub
+
+    Private Function ValidarJustificacionGrid(ByVal row As GridViewRow) As Boolean
+        Dim justificacion As String = (CType(row.FindControl("Justificativo"), TextBox)).Text
+        Dim lblVal As Label = CType(row.FindControl("lblJustVal"), Label)
+        If justificacion = Nothing Or justificacion = "" Then
+            lblVal.Text = "FALTA!"
+            lblVal.Visible = True
+            Return False
+        Else
+            lblVal.Visible = False
+            Return True
+        End If
+    End Function
 
     Protected Sub BtnAdd_Click(sender As Object, e As EventArgs) Handles BtnAdd.Click
         MostrarNewRegistro()

@@ -21,7 +21,7 @@ Public Class Login
                 'Create the ticket, and add the groups.
                 Dim isCookiePersistent As Boolean = False
                 Dim authTicket As FormsAuthenticationTicket = New FormsAuthenticationTicket(1,
-                     txtUsername.Text, DateTime.Now, DateTime.Now.AddMinutes(1), isCookiePersistent, groups)
+                     txtUsername.Text, DateTime.Now, DateTime.Now.AddMinutes(10), isCookiePersistent, groups)
 
                 'Encrypt the ticket.
                 Dim encryptedTicket As String = FormsAuthentication.Encrypt(authTicket)

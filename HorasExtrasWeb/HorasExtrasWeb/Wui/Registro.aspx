@@ -189,7 +189,6 @@
             >
             <HeaderStyle CssClass="w3-indigo w3-center w3-small" />
             <FooterStyle CssClass="w3-gray w3-center w3-small" />
-            <%--<AlternatingRowStyle CssClass="w3-light-grey" />--%>
             <Columns>
                 <asp:TemplateField HeaderText="Codigo" Visible="False">
                     <ItemTemplate>
@@ -280,9 +279,10 @@
                     <EditItemTemplate>
                         <asp:TextBox ID="Justificativo" runat="server" Text='<%#Bind("Justificativo") %>' />
                         <br>
+                        <%--<asp:RequiredFieldValidator id="JustValidator" ControlToValidate="Justificativo"
+                            display="Dynamic" text="FALTA!" runat="server" />--%>
+                            <asp:Label ID="lblJustVal" runat="server" Text="" Visible="false"/>
                         </br>
-                        <asp:RequiredFieldValidator id="JustValidator" ControlToValidate="Justificativo"
-                            display="Dynamic" text="FALTA!" runat="server" />
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Justificativo" runat="server" Text='<%# Bind("Justificativo") %>' />
