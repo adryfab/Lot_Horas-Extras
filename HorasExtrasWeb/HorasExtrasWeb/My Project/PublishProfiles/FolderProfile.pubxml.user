@@ -65,7 +65,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>04/17/2011 22:21:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/20/2017 09:14:14</publishTime>
+      <publishTime>10/20/2017 09:17:52</publishTime>
     </File>
     <File Include="Wui/Aprobacion.aspx">
       <publishTime>10/19/2017 10:26:24</publishTime>
