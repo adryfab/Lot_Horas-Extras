@@ -92,6 +92,7 @@
                     id01.Style.Item("display") = "block"
                     Exit Sub
                 Else
+                    'Ocultar mensaje
                     id01.Visible = False
                     id01.Style.Item("display") = "none"
                 End If
@@ -106,6 +107,10 @@
                     rows.Item("FechaJefe") = DateTime.Now.ToShortDateString
                 End If
             ElseIf btn.ID = "ButtonRechazar" Then
+                'Ocultar mensaje
+                id01.Visible = False
+                id01.Style.Item("display") = "none"
+
                 If rows.Item("SUPERVISOR") = "True" Then
                     rows.Item("UsuarioSuper") = ""
                     rows.Item("FechaSuper") = System.DBNull.Value
@@ -231,13 +236,16 @@
         If e.Row.RowType = DataControlRowType.DataRow Then
             Dim imgAprobar As ImageButton = TryCast(e.Row.Cells(11).Controls(1), ImageButton)
             Dim imgRechazar As ImageButton = TryCast(e.Row.Cells(11).Controls(3), ImageButton)
+            Dim lblAprobado As Label = TryCast(e.Row.Cells(11).Controls(5), Label)
             If DirectCast(e.Row.Cells(10).Controls(1), System.Web.UI.WebControls.Label).Text = "True" Then 'SUPERVISOR
                 If DirectCast(e.Row.Cells(6).Controls(1), System.Web.UI.WebControls.Label).Text = "" Then 'UsuarioSuper
                     imgAprobar.Visible = True
                     imgRechazar.Visible = False
+                    lblAprobado.Visible = False
                 Else
                     imgAprobar.Visible = False
                     imgRechazar.Visible = True
+                    lblAprobado.Visible = True
                 End If
             End If
         End If
