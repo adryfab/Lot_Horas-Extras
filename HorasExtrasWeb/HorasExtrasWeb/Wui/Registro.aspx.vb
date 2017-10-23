@@ -138,6 +138,29 @@ Public Class Registro
         Return cadenaXML
     End Function
 
+    Public Function infoXMLTotal() As String
+        Dim cadenaXML As String = String.Empty
+        cadenaXML &= "<TOTHOE "
+        cadenaXML &= "CODEMP=""" & Master.codigo & """ "
+        cadenaXML &= "ANIOPE=""" & Master.Año & """ "
+        cadenaXML &= "PERIOD=""" & Master.Periodo & """ "
+        cadenaXML &= "TOH050=""" & Session("TotHor050") & """ "
+        cadenaXML &= "TOM050=""" & Session("TotMin050") & """ "
+        cadenaXML &= "TOH100=""" & Session("TotHor100") & """ "
+        cadenaXML &= "TOM100=""" & Session("TotMin100") & """ "
+        cadenaXML &= " /> "
+        Return cadenaXML
+    End Function
+
+    Private Function ActualizarTotales() As Integer
+        Totales()
+        Dim SQLConexionBD As New SQLConexionBD()
+        Dim Resultados As Integer
+        Dim infoXlm As String = infoXMLTotal()
+        Resultados = SQLConexionBD.ActualizarTotales(Context.User.Identity.Name, infoXlm)
+        Return Resultados
+    End Function
+
     Private Function ValidarFechaHora(ByVal fecha As Date, ByVal inicio As DateTime) As Boolean
         Dim result As Boolean = False
         Dim SiFecha As Boolean = False
@@ -232,8 +255,16 @@ Public Class Registro
         cel0.Text = "Total de Horas a pagar"
         cel0.ColumnSpan = 8
         cel0.HorizontalAlign = HorizontalAlign.Right
-        cel050.Text = String.Format("{0}:{1}", horTot050 + Fix(minTot050 / 60), minTot050 Mod 60)
-        cel100.Text = String.Format("{0}:{1}", horTot100 + Fix(minTot100 / 60), minTot100 Mod 60)
+        Dim tothor50 As String = horTot050 + Fix(minTot050 / 60)
+        Dim totmin50 As String = minTot050 Mod 60
+        Session("TotHor050") = tothor50
+        Session("TotMin050") = totmin50
+        cel050.Text = String.Format("{0}:{1}", tothor50, totmin50)
+        Dim tothor100 As String = horTot100 + Fix(minTot100 / 60)
+        Dim totmin100 As String = minTot100 Mod 60
+        Session("TotHor100") = tothor100
+        Session("TotMin100") = totmin100
+        cel100.Text = String.Format("{0}:{1}", tothor100, totmin100)
         row.Cells.Add(cel0)
         row.Cells.Add(cel050)
         row.Cells.Add(cel100)
@@ -299,6 +330,7 @@ Public Class Registro
         Session("dtBiometrico") = DTable
         BindDataGrid()
         Llenar_Grid()
+        ActualizarTotales()
     End Sub
 
     Protected Sub GridView_RowUpdating(ByVal sender As Object, ByVal e As GridViewUpdateEventArgs)
@@ -338,6 +370,7 @@ Public Class Registro
             'Bind data to the GridView control.
             BindDataGrid()
             Llenar_Grid()
+            ActualizarTotales()
         Catch ex As Exception
             lblError.Text = ex.Message
         End Try
@@ -435,6 +468,7 @@ Public Class Registro
 
         LimpiarNew()
         Llenar_Grid()
+        ActualizarTotales()
     End Sub
 
     Private Function Validaciones() As Boolean

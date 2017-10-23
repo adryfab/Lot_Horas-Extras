@@ -91,7 +91,7 @@ END
 -- SELECT * FROM tbAprobaciones
 /*
 exec spAprobacionesRecuperar
-@UsuarioId = '012042'--'cguznay'
+@UsuarioId = '009275'--glavayen '012042'--'cguznay'
 */
 -- SELECT top 10 * FROM BIOMETRICO.ONLYCONTROL.dbo.NOMINA WHERE NOMINA_ID = '010350'
 -- SELECT * FROM BIOMETRICO.ONLYCONTROL.dbo.DPTO --SISTEMAS=OCAÑA DONOSO MARIA FERNANDA

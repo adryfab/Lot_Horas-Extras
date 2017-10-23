@@ -219,4 +219,20 @@ Public Class SQLConexionBD
         Return validado
     End Function
 
+    Public Function ActualizarTotales(ByVal user As String, ByVal infoXml As String) As Integer
+        Dim resultado As Integer
+        Try
+            Dim SQLDataAdapter = New SqlDataAdapter("spTotalesActualizar", Conexion)
+            SQLDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure
+            SQLDataAdapter.SelectCommand.Parameters.Add(New SqlParameter("@UsuarioId", SqlDbType.VarChar, 50))
+            SQLDataAdapter.SelectCommand.Parameters("@UsuarioId").Value = user
+            SQLDataAdapter.SelectCommand.Parameters.Add(New SqlParameter("@InfoXml", SqlDbType.Xml))
+            SQLDataAdapter.SelectCommand.Parameters("@InfoXml").Value = infoXml
+            resultado = SQLDataAdapter.SelectCommand.ExecuteNonQuery()
+        Catch ex As Exception
+            resultado = 0
+        End Try
+        Return resultado
+    End Function
+
 End Class
