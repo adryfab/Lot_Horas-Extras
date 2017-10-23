@@ -7,20 +7,20 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_NewBackgroundProfile>False</_NewBackgroundProfile>
-    <_PublishTargetUrl>C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\HorasExtrasWeb\Publish</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\Publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/AjaxControlToolkit.dll">
       <publishTime>10/19/2017 16:36:45</publishTime>
     </File>
     <File Include="bin/HorasExtrasWeb.dll">
-      <publishTime>10/20/2017 09:14:14</publishTime>
+      <publishTime>10/23/2017 14:02:56</publishTime>
     </File>
     <File Include="bin/HorasExtrasWeb.pdb">
-      <publishTime>10/20/2017 09:14:14</publishTime>
+      <publishTime>10/23/2017 14:02:56</publishTime>
     </File>
     <File Include="bin/HorasExtrasWeb.xml">
-      <publishTime>10/20/2017 09:14:14</publishTime>
+      <publishTime>10/23/2017 14:02:56</publishTime>
     </File>
     <File Include="icons/aceptar.ico">
       <publishTime>12/12/2016 11:21:18</publishTime>
