@@ -46,29 +46,29 @@
                             />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="NOMINA_ID" ItemStyle-HorizontalAlign="Center">
+                <asp:TemplateField HeaderText="Id" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:Label ID="NOMINA_ID" runat="server" Text='<%#Bind("NOMINA_ID") %>' />
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center"/>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="NOMBRE">
+                <asp:TemplateField HeaderText="Nombre">
                     <ItemTemplate>
                         <asp:Label ID="NOMBRE" runat="server" Text='<%#Bind("NOMBRE") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="APELLIDO">
+                <asp:TemplateField HeaderText="Apellido">
                     <ItemTemplate>
                         <asp:Label ID="APELLIDO" runat="server" Text='<%#Bind("APELLIDO") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="SUPLEMENTARIAS" ItemStyle-HorizontalAlign="Center">
+                <asp:TemplateField HeaderText="Suplementarias" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:Label ID="SUPLEMENTARIAS" runat="server" Text='<%#Bind("SUPLEMENTARIAS") %>' />
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center"/>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="EXTRAORDINARIAS" ItemStyle-HorizontalAlign="Center">
+                <asp:TemplateField HeaderText="Extraordinarias" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:Label ID="EXTRAORDINARIAS" runat="server" Text='<%#Bind("EXTRAORDINARIAS") %>' />
                     </ItemTemplate>
@@ -99,12 +99,13 @@
                         <asp:Label ID="SUPERVISOR" runat="server" Text='<%#Bind("SUPERVISOR") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="ACCION">
+                <asp:TemplateField HeaderText="Accion">
                     <ItemTemplate>
                         <asp:ImageButton ID="ButtonAprobar" runat="server" CommandName="aprobar" ImageUrl="../icons/aceptar.ico"
                             OnClick="OnConfirm" OnClientClick="Confirm()"/>
                         <asp:ImageButton ID="ButtonRechazar" runat="server" CommandName="rechazar" ImageUrl="../icons/rechazar.ico"
                             OnClick="OnConfirm" OnClientClick="Confirm()" Visible="false"/>
+                        <asp:Label ID="lblAprobado" runat="server" Text="Aprobado" Visible="false"/>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

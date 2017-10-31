@@ -215,14 +215,18 @@ Public Class Registro
                 min100 = min100 + Convert.ToDateTime(row("Horas100")).Minute
             Next
 
-            'gvBiometrico.FooterRow.Cells(6).Text = String.Format("{0}:{1}", horLab + Fix(minLab / 60), minLab Mod 60)
-            'gvBiometrico.FooterRow.Cells(7).Text = String.Format("{0}:{1}", horAtr + Fix(minAtr / 60), minAtr Mod 60)
-            'gvBiometrico.FooterRow.Cells(8).Text = String.Format("{0}:{1}", horAnt + Fix(minAnt / 60), minAnt Mod 60)
-            gvBiometrico.FooterRow.Cells(9).Text = String.Format("{0}:{1}", horPer + Fix(minPer / 60), minPer Mod 60)
-            gvBiometrico.FooterRow.Cells(10).Text = String.Format("{0}:{1}", horRec + Fix(minRec / 60), minRec Mod 60)
-            'gvBiometrico.FooterRow.Cells(11).Text = String.Format("{0}:{1}", hor000 + Fix(min000 / 60), min000 Mod 60)
-            gvBiometrico.FooterRow.Cells(12).Text = String.Format("{0}:{1}", hor050 + Fix(min050 / 60), min050 Mod 60)
-            gvBiometrico.FooterRow.Cells(13).Text = String.Format("{0}:{1}", hor100 + Fix(min100 / 60), min100 Mod 60)
+            Dim fhorper As Integer = horPer + Fix(minPer / 60)
+            Dim fminper As Integer = minPer Mod 60
+            gvBiometrico.FooterRow.Cells(9).Text = String.Format("{0}:{1}", fhorper.ToString("0"), fminper.ToString("00"))
+            Dim fHorRec As Integer = horRec + Fix(minRec / 60)
+            Dim fMinRec As Integer = minRec Mod 60
+            gvBiometrico.FooterRow.Cells(10).Text = String.Format("{0}:{1}", fHorRec.ToString("0"), fMinRec.ToString("00"))
+            Dim fHor050 As Integer = hor050 + Fix(min050 / 60)
+            Dim fMin050 As Integer = min050 Mod 60
+            gvBiometrico.FooterRow.Cells(12).Text = String.Format("{0}:{1}", fHor050.ToString("0"), fMin050.ToString("00"))
+            Dim fHor100 As Integer = hor100 + Fix(min100 / 60)
+            Dim fMin100 As Integer = min100 Mod 60
+            gvBiometrico.FooterRow.Cells(13).Text = String.Format("{0}:{1}", fHor100.ToString("0"), fMin100.ToString("00"))
 
             SumTotal(min050, minPer, hor050, horPer, min100, minRec, hor100, horRec)
         End If
@@ -255,13 +259,17 @@ Public Class Registro
         cel0.Text = "Total de Horas a pagar"
         cel0.ColumnSpan = 8
         cel0.HorizontalAlign = HorizontalAlign.Right
-        Dim tothor50 As String = horTot050 + Fix(minTot050 / 60)
-        Dim totmin50 As String = minTot050 Mod 60
+        Dim ftothor50 As Integer = horTot050 + Fix(minTot050 / 60)
+        Dim tothor50 As String = ftothor50.ToString("0")
+        Dim ftotmin50 As Integer = minTot050 Mod 60
+        Dim totmin50 As String = ftotmin50.ToString("00")
         Session("TotHor050") = tothor50
         Session("TotMin050") = totmin50
         cel050.Text = String.Format("{0}:{1}", tothor50, totmin50)
-        Dim tothor100 As String = horTot100 + Fix(minTot100 / 60)
-        Dim totmin100 As String = minTot100 Mod 60
+        Dim ftothor100 As Integer = horTot100 + Fix(minTot100 / 60)
+        Dim tothor100 As String = ftothor100.ToString("0")
+        Dim ftotmin100 As Integer = minTot100 Mod 60
+        Dim totmin100 As String = ftotmin100.ToString("00")
         Session("TotHor100") = tothor100
         Session("TotMin100") = totmin100
         cel100.Text = String.Format("{0}:{1}", tothor100, totmin100)
