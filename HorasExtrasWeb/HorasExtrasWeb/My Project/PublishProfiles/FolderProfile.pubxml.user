@@ -7,20 +7,20 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_NewBackgroundProfile>False</_NewBackgroundProfile>
-    <_PublishTargetUrl>C:\Users\amartinezc\Documents\Req\Registro Horas Extras Web\Lot_Horas-Extras\Publish</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\amartinezc\Documents\Req\Req 1412 - Registro Horas Extras Web\Lot_Horas-Extras\Publish</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/AjaxControlToolkit.dll">
       <publishTime>10/19/2017 16:36:45</publishTime>
     </File>
     <File Include="bin/HorasExtrasWeb.dll">
-      <publishTime>10/23/2017 14:36:45</publishTime>
+      <publishTime>10/31/2017 14:43:09</publishTime>
     </File>
     <File Include="bin/HorasExtrasWeb.pdb">
-      <publishTime>10/23/2017 14:36:45</publishTime>
+      <publishTime>10/31/2017 14:43:09</publishTime>
     </File>
     <File Include="bin/HorasExtrasWeb.xml">
-      <publishTime>10/23/2017 14:36:45</publishTime>
+      <publishTime>10/31/2017 14:43:09</publishTime>
     </File>
     <File Include="icons/aceptar.ico">
       <publishTime>12/12/2016 11:21:18</publishTime>
@@ -65,7 +65,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>04/17/2011 22:21:02</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/20/2017 09:17:52</publishTime>
+      <publishTime>10/31/2017 14:42:38</publishTime>
     </File>
     <File Include="Wui/Aprobacion.aspx">
       <publishTime>10/23/2017 14:23:29</publishTime>
