@@ -236,16 +236,18 @@
         If e.Row.RowType = DataControlRowType.DataRow Then
             Dim imgAprobar As ImageButton = TryCast(e.Row.Cells(11).Controls(1), ImageButton)
             Dim imgRechazar As ImageButton = TryCast(e.Row.Cells(11).Controls(3), ImageButton)
-            Dim lblAprobado As Label = TryCast(e.Row.Cells(11).Controls(5), Label)
+            Dim lblAprobado As Label = TryCast(e.Row.Cells(12).Controls(1), Label)
             If DirectCast(e.Row.Cells(10).Controls(1), System.Web.UI.WebControls.Label).Text = "True" Then 'SUPERVISOR
                 If DirectCast(e.Row.Cells(6).Controls(1), System.Web.UI.WebControls.Label).Text = "" Then 'UsuarioSuper
                     imgAprobar.Visible = True
                     imgRechazar.Visible = False
-                    lblAprobado.Visible = False
+                    lblAprobado.Visible = True
+                    lblAprobado.Text = "Por aprobar"
                 Else
                     imgAprobar.Visible = False
                     imgRechazar.Visible = True
                     lblAprobado.Visible = True
+                    lblAprobado.Text = "Aprobado"
                 End If
             End If
         End If

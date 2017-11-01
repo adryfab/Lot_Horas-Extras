@@ -46,7 +46,7 @@
                             />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Id" ItemStyle-HorizontalAlign="Center">
+                <asp:TemplateField HeaderText="Código" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:Label ID="NOMINA_ID" runat="server" Text='<%#Bind("NOMINA_ID") %>' />
                     </ItemTemplate>
@@ -99,12 +99,16 @@
                         <asp:Label ID="SUPERVISOR" runat="server" Text='<%#Bind("SUPERVISOR") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Accion">
+                <asp:TemplateField HeaderText="Acción" ItemStyle-HorizontalAlign="Center">
                     <ItemTemplate>
                         <asp:ImageButton ID="ButtonAprobar" runat="server" CommandName="aprobar" ImageUrl="../icons/aceptar.ico"
                             OnClick="OnConfirm" OnClientClick="Confirm()"/>
                         <asp:ImageButton ID="ButtonRechazar" runat="server" CommandName="rechazar" ImageUrl="../icons/rechazar.ico"
                             OnClick="OnConfirm" OnClientClick="Confirm()" Visible="false"/>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Estado">
+                    <ItemTemplate>
                         <asp:Label ID="lblAprobado" runat="server" Text="Aprobado" Visible="false"/>
                     </ItemTemplate>
                 </asp:TemplateField>
