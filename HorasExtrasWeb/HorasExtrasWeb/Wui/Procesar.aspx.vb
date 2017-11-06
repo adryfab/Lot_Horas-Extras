@@ -126,14 +126,14 @@ Public Class Procesar
             Dim name100 As String = "Horas100%_" + Master.Año + "-" + Master.Periodo + ".txt"
             Dim path100 As String = RutaArchivo()
             Dim namePath100 As String = path100 + name100
-            If System.IO.File.Exists(path100) Then
-                System.IO.File.Delete(path100)
+            If System.IO.File.Exists(namePath100) Then
+                System.IO.File.Delete(namePath100)
             End If
-            File = My.Computer.FileSystem.OpenTextFileWriter(namePath100, True)
+            file = My.Computer.FileSystem.OpenTextFileWriter(namePath100, True)
             For Each row As DataRow In dt100.Rows
                 file.WriteLine(row("Cedula") + tab + row("Cod") + tab + row("100"))
             Next
-            File.Close()
+            file.Close()
             DownloadFile(namePath100, True)
         Catch ex As Exception
             lblError.Text = ex.Message
