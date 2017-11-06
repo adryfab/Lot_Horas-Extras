@@ -26,7 +26,7 @@
         <div class="w3-modal-content">
             <div class="w3-container">
                 <span onclick="document.getElementById('ContentPlaceHolder1_id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                <p>Faltan registros de justificar</p>
+                <p>Faltan registros por justificar o eliminar del empleado que desea aprobar</p>
             </div>
         </div>
     </div>
