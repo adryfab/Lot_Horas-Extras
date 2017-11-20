@@ -14,6 +14,8 @@ Public Class SQLConexionBD
             Conexion.Open()
         Catch ex As Exception
             Throw ex
+        Finally
+            Conexion.Close()
         End Try
     End Sub
 
@@ -37,10 +39,21 @@ Public Class SQLConexionBD
 
     Private Function Convertir(ByVal texto As String) As String
         Dim substrings() As String = texto.Split(";")
-        Dim pass As String = substrings(3).Substring(9)
-        Dim newPass As String = Salida(pass)
-        Dim passw As String = "password=" + newPass
-        Dim subs As String = substrings(0) + ";" + substrings(1) + ";" + substrings(2) + ";" + passw
+        Dim subs As String = ""
+
+        Dim passText As String = "password"
+        For Each fern As String In substrings
+            Console.WriteLine(fern)
+            If fern.Contains(passText) = True Then
+                Dim pass As String = fern.Substring(9)
+                Dim newPass As String = Salida(pass)
+                Dim passw As String = "password=" + newPass
+                subs = subs + ";" + passw
+                Continue For
+            End If
+            subs = subs + ";" + fern
+        Next
+
         Return subs
     End Function
 
@@ -79,10 +92,17 @@ Public Class SQLConexionBD
             SQLDataAdapter.SelectCommand.Parameters("@InfoXml").Value = infoXml
             SQLDataAdapter.SelectCommand.Parameters.Add(New SqlParameter("@HorasExtrasId", SqlDbType.BigInt))
             SQLDataAdapter.SelectCommand.Parameters("@HorasExtrasId").Direction = ParameterDirection.Output
+            If Conexion.State = ConnectionState.Closed Then
+                Conexion.Open()
+            End If
             SQLDataAdapter.SelectCommand.ExecuteNonQuery()
             HorasExtrasId = SQLDataAdapter.SelectCommand.Parameters("@HorasExtrasId").Value
         Catch ex As Exception
             HorasExtrasId = 0
+        Finally
+            If Conexion.State = ConnectionState.Open Then
+                Conexion.Close()
+            End If
         End Try
         Return HorasExtrasId
     End Function
@@ -94,9 +114,16 @@ Public Class SQLConexionBD
             SQLDataAdapter.SelectCommand.CommandType = CommandType.StoredProcedure
             SQLDataAdapter.SelectCommand.Parameters.Add(New SqlParameter("@InfoXml", SqlDbType.Xml))
             SQLDataAdapter.SelectCommand.Parameters("@InfoXml").Value = infoXml
+            If Conexion.State = ConnectionState.Closed Then
+                Conexion.Open()
+            End If
             resultado = SQLDataAdapter.SelectCommand.ExecuteNonQuery()
         Catch ex As Exception
             resultado = 0
+        Finally
+            If Conexion.State = ConnectionState.Open Then
+                Conexion.Close()
+            End If
         End Try
         Return resultado
     End Function
@@ -110,9 +137,16 @@ Public Class SQLConexionBD
             SQLDataAdapter.SelectCommand.Parameters("@UsuarioId").Value = user
             SQLDataAdapter.SelectCommand.Parameters.Add(New SqlParameter("@InfoXml", SqlDbType.Xml))
             SQLDataAdapter.SelectCommand.Parameters("@InfoXml").Value = infoXml
+            If Conexion.State = ConnectionState.Closed Then
+                Conexion.Open()
+            End If
             resultado = SQLDataAdapter.SelectCommand.ExecuteNonQuery()
         Catch ex As Exception
             resultado = 0
+        Finally
+            If Conexion.State = ConnectionState.Open Then
+                Conexion.Close()
+            End If
         End Try
         Return resultado
     End Function
@@ -154,10 +188,17 @@ Public Class SQLConexionBD
             SQLDataAdapter.SelectCommand.Parameters("@UsuarioId").Value = user
             SQLDataAdapter.SelectCommand.Parameters.Add(New SqlParameter("@Justificado", SqlDbType.Bit))
             SQLDataAdapter.SelectCommand.Parameters("@Justificado").Direction = ParameterDirection.Output
+            If Conexion.State = ConnectionState.Closed Then
+                Conexion.Open()
+            End If
             SQLDataAdapter.SelectCommand.ExecuteNonQuery()
             validado = SQLDataAdapter.SelectCommand.Parameters("@Justificado").Value
         Catch ex As Exception
             validado = False
+        Finally
+            If Conexion.State = ConnectionState.Open Then
+                Conexion.Close()
+            End If
         End Try
         Return validado
     End Function
@@ -211,10 +252,17 @@ Public Class SQLConexionBD
             SQLDataAdapter.SelectCommand.Parameters("@localidad").Value = localidad
             SQLDataAdapter.SelectCommand.Parameters.Add(New SqlParameter("@feriado", SqlDbType.Bit))
             SQLDataAdapter.SelectCommand.Parameters("@feriado").Direction = ParameterDirection.Output
+            If Conexion.State = ConnectionState.Closed Then
+                Conexion.Open()
+            End If
             SQLDataAdapter.SelectCommand.ExecuteNonQuery()
             validado = SQLDataAdapter.SelectCommand.Parameters("@feriado").Value
         Catch ex As Exception
             validado = False
+        Finally
+            If Conexion.State = ConnectionState.Open Then
+                Conexion.Close()
+            End If
         End Try
         Return validado
     End Function
@@ -228,9 +276,16 @@ Public Class SQLConexionBD
             SQLDataAdapter.SelectCommand.Parameters("@UsuarioId").Value = user
             SQLDataAdapter.SelectCommand.Parameters.Add(New SqlParameter("@InfoXml", SqlDbType.Xml))
             SQLDataAdapter.SelectCommand.Parameters("@InfoXml").Value = infoXml
+            If Conexion.State = ConnectionState.Closed Then
+                Conexion.Open()
+            End If
             resultado = SQLDataAdapter.SelectCommand.ExecuteNonQuery()
         Catch ex As Exception
             resultado = 0
+        Finally
+            If Conexion.State = ConnectionState.Open Then
+                Conexion.Close()
+            End If
         End Try
         Return resultado
     End Function
